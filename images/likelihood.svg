@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="131.20724mm"
+   height="98.995277mm"
+   viewBox="0 0 131.20724 98.995277"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   sodipodi:docname="likelihood.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1541916"
+     inkscape:cx="248.65889"
+     inkscape:cy="204.03891"
+     inkscape:window-width="1440"
+     inkscape:window-height="861"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 0,0 5,-5 -17.5,5 17.5,5 z"
+         id="path1376" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 0,0 5,-5 -17.5,5 17.5,5 z"
+         id="path1379" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Send"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m 0,0 5,-5 -17.5,5 17.5,5 z"
+         id="path1385" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-11.900958,-12.090436)">
+    <path
+       id="rect846"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       d="m 137.07692,102.80769 h -115.626724 v -77.284317"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#317cd6;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 20.819975,101.12037 c 0,0 19.387129,1.06313 23.384999,-4.181192 3.99787,-5.244327 9.585653,-26.521333 19.566136,-35.146578 9.980483,-8.625245 8.488184,-17.612024 18.479129,-17.39212 11.5707,-0.09312 16.183953,24.52015 23.189501,38.769935 2.01658,10.496125 10.0774,16.100266 28.62453,16.305118"
+       id="path1378"
+       sodipodi:nodetypes="czzccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="11.594747"
+       y="15.942778"
+       id="text3566"><tspan
+         sodipodi:role="line"
+         id="tspan3564"
+         style="stroke-width:0.264583"
+         x="11.594747"
+         y="15.942778">Likelihood </tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="11.594747"
+         y="22.116402"
+         id="tspan4380"><tspan
+   style="font-style:italic"
+   id="tspan4382">L</tspan>(θ|<tspan
+   style="font-style:italic"
+   id="tspan5983">x</tspan>)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="116.30981"
+       y="110.03373"
+       id="text4394"><tspan
+         sodipodi:role="line"
+         style="font-style:italic;stroke-width:0.264583"
+         x="116.30981"
+         y="110.03373"
+         id="tspan4398"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan8307">Parameter</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.9389px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan8309"> θ</tspan></tspan></text>
+    <path
+       id="rect4452"
+       style="fill:none;fill-rule:evenodd;stroke:#747474;stroke-width:1;stroke-dasharray:4, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 21.740152,44.204971 h 61.234757 v 57.611409"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="24.06988"
+       y="41.721123"
+       id="text5989"><tspan
+         sodipodi:role="line"
+         id="tspan5987"
+         style="stroke-width:0.264583"
+         x="24.06988"
+         y="41.721123">Max likelihood</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="66.707947"
+       y="110.26296"
+       id="text5993"><tspan
+         sodipodi:role="line"
+         id="tspan5991"
+         style="stroke-width:0.264583"
+         x="66.707947"
+         y="110.26296" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="65.56176"
+       y="110.03373"
+       id="text8313"><tspan
+         sodipodi:role="line"
+         id="tspan8311"
+         style="stroke-width:0.264583"
+         x="65.56176"
+         y="110.03373">Most probable θ</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 50.641998,0.62858984 v 0.22923685"
+       id="path8413"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
