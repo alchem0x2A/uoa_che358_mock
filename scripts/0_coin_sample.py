@@ -34,7 +34,7 @@ def init():
     ax.set_yticklabels(['T ($y=0$)', 'H ($y=1$)'])
     ax.axhline(y=1.0, ls="--", color="grey", lw=1.5)
     ax.axhline(y=0.0, ls="--", color="grey", lw=1.5)
-    ax.set_xlabel("$r$ (Head weight ratio)")
+    ax.set_xlabel("$x$ (Head weight ratio)")
     ax.set_ylabel("$y$ Head or Tail")
     # ax.grid(True)
     return ax,
@@ -63,8 +63,8 @@ ani = animation.FuncAnimation(fig, update, frames=range(len(r_values)), init_fun
 
 # Show animation
 # plt.show()
+ani.save('animation.mov', fps=90)
+# ani.save('animation.png')
 fig.savefig("sample_coin_cover.pdf")
-ani.save('animation.mp4', fps=90)
-ani.save('animation.gif', fps=90)
 data = {"r": r_values, "p": p_values, "flip": res}
 np.savez("result_coin.npz", **data)

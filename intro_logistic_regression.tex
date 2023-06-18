@@ -5,6 +5,7 @@
 \usepackage{fontspec}
 \usepackage{minted}
 \usepackage{unicode-math}
+\usepackage{transparent}
 
 
 \setsansfont[
@@ -33,7 +34,6 @@ ItalicFont={* Light Italic}
 \beamertemplatenavigationsymbolsempty
 
 \begin{document}
-99
 {
 \setbeamertemplate{footline}{} 
 \frame{\titlepage}
@@ -91,15 +91,17 @@ ItalicFont={* Light Italic}
 \begin{frame}
   \frametitle{Categorical Response Variables}
 
-  Many engineering problems
-  have \textbf{categorical} response variables instead of
-  \textbf{continuous} ones:
+  The assumption of \textbf{continuous} variables may not be true for many engineering problems.
+  If the output can only take a few allowed values, we call it a \textbf{categorical} response variable.
+
+  \vfill
+  Examples:
 
   \begin{itemize}
-    \item Diagnostics: 	a patient \textbf{obese} or \textbf{not obese}
-\item Decision:      	a valve to be turned \textbf{on} or \textbf{off}
-\item Data discretization:  \textbf{pass} or \textbf{fail} a material strength test
-\item Describing types: \textbf{cubic}, \textbf{hexagonal},
+    \vfill \item Diagnostics: 	a patient \textbf{obese} or \textbf{not obese}
+\vfill \item Decision:      	a valve to be turned \textbf{on} or \textbf{off}
+\vfill \item Data discretization:  \textbf{pass} or \textbf{fail} a material strength test
+\vfill \item Describing types: \textbf{cubic}, \textbf{hexagonal},
   \textbf{triclinic} Bravais lattices, etc.
 
 \end{itemize}
@@ -108,16 +110,16 @@ ItalicFont={* Light Italic}
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Continuous vs Categorical Data}
-  In contrast, response variables suitable for linear regression are:
-\begin{itemize}
-\item Continuous and quantitative
-\item Ordering is meaningful
-\item Distance is meaningful
-\end{itemize}
+% \begin{frame}
+%   \frametitle{Continuous vs Categorical Data}
+%   In contrast, response variables suitable for linear regression are:
+% \begin{itemize}
+% \item Continuous and quantitative
+% \item Ordering is meaningful
+% \item Distance is meaningful
+% \end{itemize}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Thought Experiment: the Cheater’s Coin}
@@ -126,14 +128,15 @@ ItalicFont={* Light Italic}
   come up with a model to fit your measurements?
 
   \vfill
-  \begin{columns}[T]
-    \begin{column}{0.20\textwidth}
+  \begin{columns}
+    \begin{column}{0.25\textwidth}
       \begin{figure}[t]
+        \centering
         \includegraphics[width=\textwidth]{images/coin.pdf}
       \end{figure}
     \end{column}
     \begin{column}{0.75\textwidth}
-      \movie{\includegraphics[width=\textwidth]{scripts/animation-cover.png}}{scripts/animation_mov.mov}
+      \movie{\includegraphics[width=\textwidth]{scripts/sample_coin_cover.pdf}}{scripts/animation.mov}
       % \begin{figure}[t]
         % \animategraphics[width=\textwidth]{30}{scripts/animation-}{}{}
         % \includegraphics[width=\textwidth]{animation.gif}
@@ -143,49 +146,51 @@ ItalicFont={* Light Italic}
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{The Classification Problem}
+% \begin{frame}
+%   \frametitle{The Classification Problem}
 
-  Given:
-  \begin{enumerate}
-  \item Dataset: $D = \{(X_{1}, y_{1}), (X_{2},y_{2}), \cdots , (X_{n}, y_{n})\}$
-  \item Categorical response variable $y$: $y_{i} \in C$, $C = \{C_{1}, C_{2}, \cdots, C_{k}\}$
+%   Given:
+%   \begin{enumerate}
+%   \item Dataset: $D = \{(X_{1}, y_{1}), (X_{2},y_{2}), \cdots , (X_{n}, y_{n})\}$
+%   \item Categorical response variable $y$: $y_{i} \in C$, $C = \{C_{1}, C_{2}, \cdots, C_{k}\}$
     
-\item Find optimal classifier function: $p(X; \theta)$ that predicts the category using parameter set $\theta$
-  \end{enumerate}
+% \item Find optimal classifier function: $p(X; \theta)$ that predicts the category using parameter set $\theta$
+%   \end{enumerate}
 
-  \vspace{2em}
+%   \vspace{2em}
 
-  What a classification model will achieve:
-    \begin{enumerate}
-    \item Predict the categorical label
-    \item Decision boundary for separation
-    \item Probability of outcome
-    \end{enumerate}
+%   What a classification model will achieve:
+%     \begin{enumerate}
+%     \item Predict the categorical label
+%     \item Decision boundary for separation
+%     \item Probability of outcome
+%     \end{enumerate}
   
-\end{frame}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Solving Classification Problem by Regression}
+
+%   If the classifier function $p(X; \theta)$ corresponds to the
+%   \textbf{probability} of the outcome belonging to one class, the
+%   classification problem can be solved by regression.
+
+%   \vspace{2em}
+
+%   \begin{figure}[t]
+%     \vspace{-2em}
+%      \includegraphics[width=0.6\textwidth]{images/classification_dog_cat.pdf}
+%     \end{figure}
+  
+%   \end{frame}
+
+
+
 
 \begin{frame}
-  \frametitle{Solving Classification Problem by Regression}
+  \frametitle{First Try: Linear Regression for Categorical Variables}
 
-  If the classifier function $p(X; \theta)$ corresponds to the
-  \textbf{probability} of the outcome belonging to one class, the
-  classification problem can be solved by regression.
-
-  \vspace{2em}
-
-  \begin{figure}[t]
-    \vspace{-2em}
-     \includegraphics[width=0.6\textwidth]{images/classification_dog_cat.pdf}
-    \end{figure}
   
-  \end{frame}
-
-
-
-
-\begin{frame}
-  \frametitle{First Try: Linear Regression for Classification Problems}
   \begin{columns}[T]
     \begin{column}{0.350\textwidth}
       Let's fit the dichotomous response variable $y_{i}$ by:

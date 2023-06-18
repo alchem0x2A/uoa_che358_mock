@@ -3,11 +3,11 @@
 
 <svg
    width="75.916519mm"
-   height="50.284878mm"
-   viewBox="0 0 75.916519 50.284878"
+   height="65.542694mm"
+   viewBox="0 0 75.916519 65.542694"
    version="1.1"
    id="svg32702"
-   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
    sodipodi:docname="coin.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,19 +24,21 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.0171284"
-     inkscape:cx="99.790748"
-     inkscape:cy="170.08669"
+     inkscape:cx="100.7739"
+     inkscape:cy="171.06985"
      inkscape:window-width="1280"
      inkscape:window-height="692"
      inkscape:window-x="119"
-     inkscape:window-y="87"
+     inkscape:window-y="59"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      inkscape:snap-bbox="true"
      fit-margin-top="1"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="1" />
+     fit-margin-bottom="1"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs32699">
     <inkscape:path-effect
@@ -95,7 +97,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-18.770115,-86.264289)">
+     transform="translate(-18.770115,-86.163631)">
     <path
        style="fill:#7d7d7d;fill-opacity:1;fill-rule:evenodd;stroke-width:1.5;stroke-dasharray:4.50001, 4.50001"
        d="m 31.633133,101.08925 h 50.0858 v 12.70217 h -50.0858 z"
@@ -122,59 +124,68 @@
        sodipodi:nodetypes="csc" />
     <text
        xml:space="preserve"
-       style="font-size:4.9389px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
-       x="38.573692"
+       style="font-size:6.35px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
+       x="33.403336"
        y="91.116631"
        id="text37838"><tspan
          sodipodi:role="line"
          id="tspan37836"
-         style="stroke-width:0.264583"
-         x="38.573692"
+         style="font-size:6.35px;stroke-width:0.264583"
+         x="33.403336"
          y="91.116631">Head weight: <tspan
-   style="font-style:italic"
+   style="font-style:italic;font-size:6.35px"
    id="tspan38668">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan39450">H</tspan></tspan></text>
+   id="tspan637">H</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.9389px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
-       x="38.573692"
+       style="font-size:6.35px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
+       x="36.27179"
        y="127.09996"
        id="text39832"><tspan
          sodipodi:role="line"
          id="tspan39830"
-         style="stroke-width:0.264583"
-         x="38.573692"
+         style="font-size:6.35px;stroke-width:0.264583"
+         x="36.27179"
          y="127.09996">Tail weight: <tspan
-   style="font-style:italic"
+   style="font-style:italic;font-size:6.35px"
    id="tspan39826">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan40044">T</tspan></tspan></text>
+   id="tspan639">T</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.9389px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
-       x="38.786064"
-       y="134.56139"
+       style="font-size:6.35px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
+       x="37.31477"
+       y="150.43633"
        id="text40920"><tspan
          sodipodi:role="line"
          id="tspan40918"
-         style="baseline-shift:baseline;stroke-width:0.264583"
-         x="38.786064"
-         y="134.56139"><tspan
-   style="font-style:italic;baseline-shift:baseline"
-   id="tspan41874">r</tspan> = <tspan
-   style="font-style:italic;baseline-shift:baseline"
-   id="tspan41876">w</tspan><tspan
+         style="font-size:6.35px;baseline-shift:baseline;stroke-width:0.264583"
+         x="37.31477"
+         y="150.43633"><tspan
+   style="font-style:italic;font-size:6.35px;baseline-shift:baseline"
+   id="tspan41874">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan6166">H</tspan> / (<tspan
-   style="font-style:italic;baseline-shift:baseline"
+   id="tspan647">H</tspan> / (<tspan
+   style="font-style:italic;font-size:6.35px;baseline-shift:baseline"
    id="tspan41878">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan6546">T</tspan> + <tspan
-   style="font-style:italic"
+   id="tspan651">T</tspan> + <tspan
+   style="font-style:italic;font-size:6.35px"
    id="tspan6926">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan7048">H</tspan>)</tspan></text>
+   id="tspan655">H</tspan>)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
+       x="31.076073"
+       y="142.05627"
+       id="text643"><tspan
+         sodipodi:role="line"
+         id="tspan641"
+         style="font-size:6.35px;stroke-width:0.264583"
+         x="31.076073"
+         y="142.05627">Head weight ratio</tspan></text>
   </g>
   <script
      id="mesh_polyfill"
