@@ -1,10 +1,18 @@
 \documentclass[10pt,aspectratio=169]{beamer}
+\usecolortheme{rose}
 \usefonttheme{professionalfonts}
 \usepackage[utf8]{inputenc}
 \usepackage{fontspec}
 \usepackage{minted}
 \usepackage{unicode-math}
-\setsansfont{Roboto Light}
+
+
+\setsansfont[
+UprightFont={* Light},
+BoldFont={* Medium},
+ItalicFont={* Light Italic}
+]{Fira Sans}
+
 \setmonofont{DejaVu Sans Mono}
 \usepackage{hyperref}
 % \setsansfont{Fira Sans}
@@ -17,25 +25,67 @@
 \usepackage{multimedia}
 % \setmathfont{Fira Math Regular}
 \title{\Large \bfseries Introduction to Logistic Regression}
-\subtitle{CHE 358 Mock Lecture}
-\author{Tian Tian}
-\date{22 June 2023}
-    
+\subtitle{\large CHE 358 Mock Lecture}
+\author{\large Tian Tian}
+\date{\large 22 June 2023}
+
+\setbeamertemplate{footline}[page number]
+\beamertemplatenavigationsymbolsempty
 
 \begin{document}
-    
+99
+{
+\setbeamertemplate{footline}{} 
 \frame{\titlepage}
+}
 
 
-\begin{frame}
+\begin{frame}[c]
 \frametitle{Perspective of Lecture}
 \begin{enumerate}
 \item The classification problem
-\item Logistic regression vs linear regression
-\item Fitting a logistic regression
-\item Case study: Li-ion battery failure
-\item Beyond logistic regression: neural networks
+\vfill \item Logistic regression vs linear regression
+\vfill \item Fitting a logistic regression
+\vfill \item Case study: Li-ion battery failure
+\vfill \item Beyond logistic regression: neural networks
 \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Linear Regression Recap}
+  \begin{enumerate}
+  \item Model Structure
+
+    \vfill
+    $y = f(x; \beta) =  β_{0} + β_{1} x_{1} + β_{2} x_{x} + ... + β_{d} x_{d} + \epsilon$
+
+    $x$ and $y$ are \textbf{continuous} variables.
+    
+    \vfill \item Assumptions
+
+    \vfill
+    \begin{itemize}
+    \item \textbf{Linear} relation between $x$ and $y$
+    \item \textbf{Independent} observations
+    \item \textbf{Normal} distribution of error $\epsilon$
+    \item \textbf{Constant} variance of error
+    \end{itemize}
+
+
+ 
+    \vfill \item Solving linear regression
+        \vfill
+    Least square fitting $\hat{\beta} = \mathrm{argmin} S = \mathrm{argmin} \sum_{i=1}^{n} (y_{i} - f(x_{i}; \beta))^{2}$
+    
+    \vfill \item Interpretation
+    \vfill
+    Coefficients $\beta$: how much $y$ change by one unit of $x$\\
+    $R^{2}$: how well the model fits data
+    
+    
+  \end{enumerate}
+
 \end{frame}
 
 \begin{frame}
@@ -56,13 +106,40 @@
 
 \vspace{2em}
 
-In contrast, response variables suitable for linear regression are:
+\end{frame}
+
+\begin{frame}
+  \frametitle{Continuous vs Categorical Data}
+  In contrast, response variables suitable for linear regression are:
 \begin{itemize}
 \item Continuous and quantitative
 \item Ordering is meaningful
 \item Distance is meaningful
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Thought Experiment: the Cheater’s Coin}
+  
+  You're a casino owner who wishes to create a biased coin. Can you
+  come up with a model to fit your measurements?
+
+  \vfill
+  \begin{columns}[T]
+    \begin{column}{0.20\textwidth}
+      \begin{figure}[t]
+        \includegraphics[width=\textwidth]{images/coin.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.75\textwidth}
+      \movie{\includegraphics[width=\textwidth]{scripts/animation-cover.png}}{scripts/animation_mov.mov}
+      % \begin{figure}[t]
+        % \animategraphics[width=\textwidth]{30}{scripts/animation-}{}{}
+        % \includegraphics[width=\textwidth]{animation.gif}
+      % \end{figure}
+    \end{column}
+  \end{columns}
 
 \end{frame}
 
@@ -105,29 +182,7 @@ In contrast, response variables suitable for linear regression are:
   \end{frame}
 
 
-\begin{frame}
-  \frametitle{Thought Experiment: the Cheater’s Coin}
-  
-  You're a casino owner who wishes to create a biased coin. Can you
-  come up with a model to fit your measurements?
 
-  \vfill
-  \begin{columns}[T]
-    \begin{column}{0.20\textwidth}
-      \begin{figure}[t]
-        \includegraphics[width=\textwidth]{images/coin.pdf}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.75\textwidth}
-      % \movie[loop]{}{scripts/animation.mp4}
-      % \begin{figure}[t]
-        % \animategraphics[width=\textwidth]{30}{scripts/animation-}{}{}
-        % \includegraphics[width=\textwidth]{animation.gif}
-      % \end{figure}
-    \end{column}
-  \end{columns}
-
-\end{frame}
 
 \begin{frame}
   \frametitle{First Try: Linear Regression for Classification Problems}
@@ -248,7 +303,7 @@ In contrast, response variables suitable for linear regression are:
           
         \item Symmetry
 
-          $p(z) = 1 - p(1 -z)$
+          $p(z) = 1 - p(-z)$
           
         \item Inflection point
 
@@ -277,10 +332,10 @@ In contrast, response variables suitable for linear regression are:
     \end{columns}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Solving Logistic Regression: Ordinary Least Square?}
+  % \begin{frame}
+  %   \frametitle{Solving Logistic Regression: Ordinary Least Square?}
     
-  \end{frame}
+  % \end{frame}
 
   \begin{frame}
     \frametitle{Fitting by Logistic Function: the Maximum Likelihood Estimation}
@@ -408,6 +463,10 @@ In contrast, response variables suitable for linear regression are:
         In practice, many other methods like the
         Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm have better
         performance than the Newton's method.
+
+        \begin{figure}[t]
+          \includegraphics[width=0.5\textwidth]{images/gd-placeholder.jpg}
+        \end{figure}
       \end{frame}
 
       \begin{frame}
@@ -481,6 +540,12 @@ In contrast, response variables suitable for linear regression are:
 
       \begin{frame}
         \frametitle{How Do We Measure the Performance?}
+        \begin{enumerate}
+        \item Cost function (log-loss)
+        \item Classification accuracy
+        \item Confusion matrix
+        \item (Pseudo) $R^{2}$ metric
+        \end{enumerate}
         
       \end{frame}
 
@@ -531,7 +596,7 @@ In contrast, response variables suitable for linear regression are:
       \begin{frame}
         \frametitle{Real-World Example: Li-ion Battery Failure (4)\let\thefootnote\relax\footnote{{\tiny See course material \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
 
-        
+        \textbf{TBD}
         
         
       \end{frame}
@@ -541,22 +606,34 @@ In contrast, response variables suitable for linear regression are:
         In machine learning, the logistic regression can be viewed as
         a single perceptron (neuron).
 
+        \begin{figure}[t]
+          \includegraphics[width=0.65\linewidth]{images/nn-1.pdf}
+        \end{figure}
+
         
       \end{frame}
 
       \begin{frame}
         \frametitle{Advanced Topic: Logistic Regression to Neural Network (2)}
         We can extend the single ``logistic perceptron'' to a complex ``neural network''.
+
+        \begin{figure}[t]
+          \includegraphics[width=0.85\linewidth]{images/nn-2.pdf}
+        \end{figure}
         
       \end{frame}
 
       \begin{frame}
         \frametitle{Advanced Topic: Logistic Regression to Neural Network (3)}
+        Can single logistic neuron solve non-linear classification problem?
+        \movie[loop]{\includegraphics[width=0.90\textwidth]{images/nn-1-cover.jpg}}{images/nn-1-compressed.mov}
         
       \end{frame}
 
       \begin{frame}
         \frametitle{Advanced Topic: Logistic Regression to Neural Network (4)}
+        Multi-neuron classification
+               \movie[loop]{\includegraphics[width=0.90\textwidth]{images/nn-2-cover.jpg}}{images/nn-2-compressed.mov} 
         
       \end{frame}
 

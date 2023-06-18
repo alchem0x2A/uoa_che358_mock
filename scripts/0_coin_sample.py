@@ -63,7 +63,8 @@ ani = animation.FuncAnimation(fig, update, frames=range(len(r_values)), init_fun
 
 # Show animation
 # plt.show()
-
+fig.savefig("sample_coin_cover.pdf")
 ani.save('animation.mp4', fps=90)
+ani.save('animation.gif', fps=90)
 data = {"r": r_values, "p": p_values, "flip": res}
 np.savez("result_coin.npz", **data)
