@@ -190,14 +190,21 @@ ItalicFont={* Light Italic}
 \begin{frame}
   \frametitle{First Try: Linear Regression for Categorical Variables}
 
-  
-  \begin{columns}[T]
-    \begin{column}{0.350\textwidth}
-      Let's fit the dichotomous response variable $y_{i}$ by:
+  Let's first try to use linear regression to fit the \textbf{probability} that
+  our biased coin shows head. The probability function to fit is:
   \begin{equation*}
-    p(x; \theta) = \beta_{0} + \beta_{1} x
+    y = p(x; \mathbb{\beta}) = \beta_{0} + \beta_{1} x
   \end{equation*}
 
+  \vfill
+  Our dataset
+  \begin{itemize}
+  \item Predictor (input) variable: $\mathbf{x} = \{x_{1}, x_{2}, \cdots, x_{n}\} \in \mathbb{R}^{1, n}$
+  \item Response (predict) variable: $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{1, n}$
+  \item Parameter set: $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{1, 2}$
+  \end{itemize}
+
+  \vfill
   Does linear regression makes sense?
   \begin{itemize}
   \item Range of predicted values?
@@ -205,15 +212,12 @@ ItalicFont={* Light Italic}
   \item Are the predictions meaningful?
   \item Data extrapolation?
   \end{itemize}
-\end{column}
+\end{frame}  
 
-\begin{column}{0.65\textwidth}
-  \begin{figure}[t]
-    \includegraphics[width=1.1\textwidth]{scripts/coin_linear_fit.pdf}
-  \end{figure}
-\end{column}
-  \end{columns}
-\end{frame}
+  
+
+  
+  
 
 \begin{frame}
   \frametitle{Why Not Linear Regression?}
