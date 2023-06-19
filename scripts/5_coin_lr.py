@@ -31,7 +31,7 @@ def plot_main():
     ax.plot(xx_p, yy_p, lw=2.0, color="#7f5c00")
     ax.axvline(x=x0, color="grey", alpha=0.8, lw=2.5, ls="-")
     ax.text(x=0.02, y=0.75, ha="left", va="bottom",
-            s=f'$p(x) = \\dfrac{{1}}{{1 + \\mathrm{{exp}}({{{b:.2f}}} + {{{w:.2f}}}x)}}$')
+            s=f'$p(x) = \\dfrac{{1}}{{1 + e^{{({{{b:.2f}}} + {{{w:.2f}}}x)}}}}$')
     ax.text(x=0.02, y=0.65, ha="left", va="bottom",
             s=f"Accuracy: {accuracy * 100:.1f}%")
     ax.text(x=x0, y=1.25, s=f"Decision Boundary", va="bottom", ha="center")

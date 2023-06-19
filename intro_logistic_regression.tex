@@ -262,8 +262,7 @@ ItalicFont={* Light Italic}
   \frametitle{Candidates for Non-Linear Regression}
 
   A series of S-shaped (sigmoid) functions may meet our
-  criteria. Let's check their plots in 1D.
-  \vfill
+  criteria. Let's check their plots in 1D.  \vfill
   \begin{figure}[t]
     \only<1>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs.pdf}}
     \only<2>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs_emphasize_logistic.pdf}}
@@ -274,9 +273,10 @@ ItalicFont={* Light Italic}
   \frametitle{The Logistic Function: Properties}
   
   In 1D form, the sigmoid function $p(z) = 1/(1 + \mathrm{exp}(-z))$
-  is called the \textbf{logistic function} \let\thefootnote\relax\footnotetext{{\scriptsize
-      In machine learning, \textit{sigmoid} function explicitly means
-      logistic function.}}.
+  is called the \textbf{logistic function}
+  \let\thefootnote\relax\footnotetext{{\scriptsize In machine
+      learning, \textit{sigmoid} function explicitly means logistic
+      function.}}.
     %
   The process of fitting binary dataset is referred to as
   \textbf{logistic regression}.
@@ -284,25 +284,25 @@ ItalicFont={* Light Italic}
   \begin{columns}[T]
     \begin{column}{0.4\textwidth}
       \begin{enumerate}
-      \vfill \item Asymptotic behavior
+        \vfill \item Asymptotic behavior
           
         $\mathrm{lim}_{z\to\infty} p(z) = 1$
           
         $\mathrm{lim}_{z\to-\infty} p(z) = 0$
           
-      \vfill \item Symmetry
+        \vfill \item Symmetry
 
         $p(z) = 1 - p(-z)$
           
-      \vfill \item Point of inflection
+        \vfill \item Point of inflection
 
         $p(0) = \frac{1}{2}$
           
-      \vfill \item Inverse function
+        \vfill \item Inverse function
 
         $p^{-1} = \mathrm{log}(\frac{p}{1 - p})$
 
-      \vfill \item 1st and 2nd Derivatives
+        \vfill \item 1st and 2nd Derivatives
 
         $p^{'}(z) = p(z)(1 - p(z))$
 
@@ -344,8 +344,8 @@ ItalicFont={* Light Italic}
     $p^{-1}$ is called the \textbf{Logit} function, measuring the
     log-odds (i.e. probability ratio between a head and tail). %
     \vfill%
-    \textbf{Question: can be directly use the Logit function form to perform a
-    logistic regression?}
+    \textbf{Question: can be directly use the Logit function form to
+      perform a logistic regression?}
   
   \end{frame}
 
@@ -354,8 +354,8 @@ ItalicFont={* Light Italic}
       Estimation}
 
     A common approach to solve logistic regression is to maximize the
-    \textbf{likelihood function} $\mathscr{L}(\beta|\mathbb{D})$ of the
-    logistic function by varying the parameter set $\beta$.
+    \textbf{likelihood function} $\mathscr{L}(\beta|\mathbb{D})$ of
+    the logistic function by varying the parameter set $\beta$.
 
     The logistic regression problem is solved by find:
 
@@ -364,23 +364,24 @@ ItalicFont={* Light Italic}
     \end{equation*}
     
     \begin{figure}[t] %
-       \vspace{-2em}%
-           \includegraphics[width=0.7\textwidth]{images/likelihood.pdf}
-         \end{figure}
+      \vspace{-2em}%
+      \includegraphics[width=0.7\textwidth]{images/likelihood.pdf}
+    \end{figure}
 
     
-       \end{frame}
+  \end{frame}
 
 
-       \begin{frame}
-         \frametitle{The Likelihood of Logistic Function}
+  \begin{frame}
+    \frametitle{The Likelihood of Logistic Function}
 
-         The likelihood $L(\beta)$ of logistic functions follows the
-         Bernoulli distribution\let\thefootnote\relax%
-         \footnotetext{\scriptsize Montgomery \& Runger, Applied Statistics \& Probability for Engineers, 6th Ed, Chapter 7}.%
-         Assume for any datum 
+    The likelihood $L(\beta)$ of logistic functions follows the
+    Bernoulli distribution\let\thefootnote\relax%
+    \footnotetext{\scriptsize Montgomery \& Runger, Applied Statistics
+      \& Probability for Engineers, 6th Ed, Chapter 7}.%
+    Assume for any datum
          %
-         $(x_{i}, y_{i})$, $p_{i} = p(x_{i}; \beta)$, we have:
+    $(x_{i}, y_{i})$, $p_{i} = p(x_{i}; \beta)$, we have:
 
         \begin{equation*}
           \mathscr{L}(\beta|\mathbb{D}) = \prod_{i=1}^{n} p_{i}^{y_{i}} (1 - p_{i})^{1-y_{i}}
@@ -425,9 +426,8 @@ ItalicFont={* Light Italic}
           rate} (at step $s$), an important hyper-parameter in machine
         learning.
 
-        \vfill
-        \textbf{Question: where are the data points $(x_{i}, y_{i})$ in
-        the above equation?}
+        \vfill \textbf{Question: where are the data points
+          $(x_{i}, y_{i})$ in the above equation?}
 
       \end{frame}
 
@@ -435,12 +435,13 @@ ItalicFont={* Light Italic}
         \frametitle{Gradients of Logistic Regression}
         %
         \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=-0.1cm] at (current page.north east) {\textcolor{magenta}{\textbf{In-depth Analysis}}};
-\end{tikzpicture}
+          \node[anchor=north east,yshift=-0.1cm] at (current
+          page.north east) {\textcolor{magenta}{\textbf{In-depth
+                Analysis}}};
+        \end{tikzpicture}
 %
-        The logistic function is a
-        perfect candidate for gradient-based optimization due to the
-        neat form of gradients.
+        The logistic function is a perfect candidate for
+        gradient-based optimization due to the neat form of gradients.
 
         \vfill We can rewrite the cost function
         $\mathscr{l}(\beta|\mathbb{D})$ of logistic function as:
@@ -471,8 +472,7 @@ ItalicFont={* Light Italic}
         \begin{columns}[T]
           \begin{column}{0.45\textwidth}
             \inputminted[fontsize=\scriptsize]{python}{sample_lr_coin.py}
-            \vfill
-            Do you spot any issues?
+            \vfill Do you spot any issues?
           \end{column}
 
           \begin{column}{0.55\textwidth}
@@ -493,14 +493,13 @@ ItalicFont={* Light Italic}
         \frametitle{Caveat: Regularization}
         
         The naive logistic regression may work poorly on some
-        datasets.  Let's modify the coin example a bit. This time, the
-        coin will always ends in head when $x > 0.5$, and tail if
-        $x < 0.5$. Which model is correct?  \textbf{TODO: change the
-          plot axis and shape}
+        datasets! Imagine the coin will always ends in head when
+        $x > 0.5$, and tail if $x < 0.5$. Which model is correct?
 
         \begin{figure}[t]
-          \vspace{-1em}
-          \includegraphics[width=0.90\textwidth]{scripts/perfect_sep.pdf}
+          \only<1>{\includegraphics[width=\textwidth]{scripts/perfect_sep.pdf}}
+          
+          \only<2>{\includegraphics[width=\textwidth]{scripts/perfect_sep_new_data.pdf}}
         \end{figure}
         
       \end{frame}
@@ -542,7 +541,7 @@ ItalicFont={* Light Italic}
         Let's see how regularization helps in the previous case:
 
         \begin{figure}[t]
-          \includegraphics[width=0.95\textwidth]{scripts/perfect_sep_reg.pdf}
+          \includegraphics[width=\textwidth]{scripts/perfect_sep_reg.pdf}
         \end{figure}
       \end{frame}
 
@@ -550,6 +549,7 @@ ItalicFont={* Light Italic}
         \frametitle{How Do We Measure the Performance?}
         \begin{enumerate}
           \vfill \item \textbf{Cost function}
+          
           $\mathscr{l}(\beta | \mathbb{D})$ can be a convenient
           measurement when rank different models.
           
@@ -568,7 +568,11 @@ ItalicFont={* Light Italic}
 
           Unlike ordinary least square, logistic regression does not
           have uniquely defined $R^{2}$, although some pseudo-$R^{2}$
-          metrics have been proposed.
+          metrics have been proposed.%
+          \let\thefootnote\relax\footnotetext{\scriptsize See Hosmer
+            et al. \textit{Applied Logistic Regression} 3rd Ed,
+            Chapter 5.}
+          %
         \end{enumerate}
         
       \end{frame}
@@ -585,16 +589,23 @@ ItalicFont={* Light Italic}
         \begin{enumerate}
           \vfill \item Increase $x$ by 1 amplifies the odd ratio by
           $e^{\beta_{1}}$ \vfill \item At
-          $x = - \dfrac{\beta_{0}}{\beta_{1}}$, the odd ratio is 1
-          \vfill \item Positive $\beta_{1}$: the probability of
-          predicted class ($y=1$) increases with larger $x$
-          \vfill \item Negative $\beta_{1}$: the probability of
+          $x = - \dfrac{\beta_{0}}{\beta_{1}}$ (decision boundary),
+          the odd ratio is 1 \vfill \item Positive $\beta_{1}$: the
+          probability of predicted class ($y=1$) increases with larger
+          $x$ \vfill \item Negative $\beta_{1}$: the probability of
           predicted class ($y=1$) decreases with larger $x$
         \end{enumerate}
       \end{frame}
 
       \begin{frame}
         \frametitle{Logistic Regression in Higher Dimensions}
+        %
+        \begin{tikzpicture}[remember picture,overlay]
+          \node[anchor=north east,yshift=-0.1cm] at (current
+          page.north east) {\textcolor{magenta}{\textbf{In-depth
+                Analysis}}};
+        \end{tikzpicture}
+        %
 
         It is straightforward to extend the logistic regression if
         input variable $\mathbf{x} \in \mathbb{R}^{d}$.  \vfill
@@ -623,7 +634,7 @@ ItalicFont={* Light Italic}
         \frametitle{Real-World Example: Li-ion Battery Failure (1)}
 
         Can you predict if a lithium-ion battery in EV will fail from
-        measurements\let\thefootnote\relax\footnote{{\tiny Zhao et
+        measurements\let\thefootnote\relax\footnote{{\scriptsize Zhao et
             al. \textit{iScience} \textbf{25}, 104172}}?
 
         \begin{figure}[t]
@@ -635,7 +646,7 @@ ItalicFont={* Light Italic}
       \begin{frame}
         \frametitle{Real-World Example: Li-ion Battery Failure (2)}
         Battery failure
-        dataset. \let\thefootnote\relax\footnote{{\tiny Zhao et
+        dataset. \let\thefootnote\relax\footnote{{\scriptsize Zhao et
             al. \textit{iScience} \textbf{25}, 104172}}.
 
         \begin{figure}[t]
@@ -645,25 +656,27 @@ ItalicFont={* Light Italic}
 
       \begin{frame}
         \frametitle{Real-World Example: Li-ion Battery Failure
-          (3)\let\thefootnote\relax\footnote{{\tiny See course
+          (3)\let\thefootnote\relax\footnote{{\scriptsize See course
               material
               \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
-
+        
+        General procedures for fitting / classification using logistic regression:
+        
         \begin{itemize}
-        \item Step 1: Dataset split (train / test)
+        \vfill \item Step 1: \textbf{Dataset split} 
 
-          Rule of thumb: 80/20 or 70/30 rule
+          Rule of thumb: 80/20 or 70/30 (train/test) rule
           
-        \item Step 2: Create a logistic regression model
+        \vfill \item Step 2:\textbf{ Create a logistic regression model}
 
           See our example in coin dataset
           
-        \item Step 3: Hyper-parameter tuning
+        \vfill \item Step 3: \textbf{Hyper-parameter tuning}
 
           Some hyper-parameters (e.g. regularization) may affect model
           performance beyond $\beta$
           
-        \item Step 4: Model accuracy test
+        \vfill \item Step 4: \textbf{Model accuracy test}
 
           Additional dataset or cross-validation
         \end{itemize}
@@ -673,7 +686,7 @@ ItalicFont={* Light Italic}
 
       \begin{frame}
         \frametitle{Real-World Example: Li-ion Battery Failure
-          (4)\let\thefootnote\relax\footnote{{\tiny See course
+          (4)\let\thefootnote\relax\footnote{{\scriptsize See course
               material
               \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
 
