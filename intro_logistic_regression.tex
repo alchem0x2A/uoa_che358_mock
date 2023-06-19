@@ -58,7 +58,7 @@ ItalicFont={* Light Italic}
 
     \vfill
     $y = f(x; \beta) = β_{0} + β_{1} x_{1} + β_{2} x_{x} + ... + β_{d}
-    x_{d} + \epsilon$
+    x_{d} + \epsilon \quad\quad \epsilon \sim N(0, \sigma^{2})$
 
     $x$ and $y$ are \textbf{continuous} variables.
     
@@ -75,8 +75,8 @@ ItalicFont={* Light Italic}
 
  
     \vfill \item Solving linear regression \vfill Least square fitting
-    $\hat{\beta} = \mathrm{argmin} S = \mathrm{argmin} \sum_{i=1}^{n}
-    (y_{i} - f(x_{i}; \beta))^{2}$
+    ${\displaystyle \hat{\beta} = \mathrm{argmin}\ S =
+      \mathrm{argmin}\ \sum_{i=1}^{n} (y_{i} - f(x_{i}; \beta))^{2}}$
     
     \vfill \item Interpretation \vfill
     Coefficients $\beta$: how much $y$ change by one unit of $x$\\
@@ -94,19 +94,21 @@ ItalicFont={* Light Italic}
   many engineering problems.  If the output can only take a few
   allowed values, we call it a \textbf{categorical} response variable.
 
-  \vfill Examples:
+  \begin{figure}
+    \includegraphics[width=0.85\textwidth]{images/categorical.pdf}
+  \end{figure}
 
-  \begin{itemize}
-    \vfill \item Diagnostics: a patient \textbf{obese} or \textbf{not
-      obese} \vfill \item Decision: a valve to be turned \textbf{on}
-    or \textbf{off} \vfill \item Data discretization: \textbf{pass} or
-    \textbf{fail} a material strength test \vfill \item Describing
-    types: \textbf{cubic}, \textbf{hexagonal}, \textbf{triclinic}
-    Bravais lattices, etc.
+  % \begin{itemize}
+  %   \vfill \item Diagnostics: a patient \textbf{obese} or \textbf{not
+  %     obese} \vfill \item Decision: a valve to be turned \textbf{on}
+  %   or \textbf{off} \vfill \item Data discretization: \textbf{pass} or
+  %   \textbf{fail} a material strength test \vfill \item Describing
+  %   types: \textbf{cubic}, \textbf{hexagonal}, \textbf{triclinic}
+  %   Bravais lattices, etc.
 
-  \end{itemize}
+  % \end{itemize}
 
-  \vspace{2em}
+  % \vspace{2em}
 
 \end{frame}
 
@@ -153,13 +155,13 @@ ItalicFont={* Light Italic}
   \vfill Our dataset
   \begin{itemize}
   \item Predictor (input) variable:
-    $\mathbf{x} = \{x_{1}, x_{2}, \cdots, x_{n}\} \in \mathbb{R}^{1,
-      n}$
+    $\mathbf{x} = \{x_{1}, x_{2}, \cdots, x_{n}\} \in \mathbb{R}^{(1,
+      n)}$
   \item Response (predict) variable:
-    $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{1,
-      n}$
+    $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{(1,
+      n)}$
   \item Parameter set:
-    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{1, 2}$
+    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{(1, 2)}$
   \end{itemize}
 
   \vfill Does linear regression makes sense?
@@ -500,8 +502,8 @@ ItalicFont={* Light Italic}
         \textbf{over-fitting}.  We can add additional penalty terms
         $P(\beta)$ to our cost function to avoid large coefficient
         $\beta$ (weights). Two commonly used regularization methods in
-        statistics and machine learning
-        are \let\thefootnote\relax\footnotetext{ The choice of L1 or L2
+        statistics and machine learning are
+        \let\thefootnote\relax\footnotetext{ The choice of L1 or L2
           depends on the problem.}:
 
         \begin{itemize}

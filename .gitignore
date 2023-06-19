@@ -877,3 +877,19 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.toptal.com/developers/gitignore/api/tex
+/materials/
+/_region_.tex
+/Intro_logistic regression.ipynb
+/welcome.md
+/teaching_Tian_logistic_regression.pptx
+/Untitled.ipynb
+/animation.gif
+/animation.mp4
+/celery.sqlite
+/celerybeat-schedule.db
+/data/FastCharge.zip
+/data/finaldata_4.mat
+/demo-dataframe-and-plots.ipynb
+/demo-slides.ipynb
+/demo-slides.slides.html
+/demo.ipynb
