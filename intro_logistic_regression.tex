@@ -7,6 +7,7 @@
 \usepackage{unicode-math}
 \usepackage{transparent}
 \usepackage{tikz}
+\usepackage{adjustbox}
 
 
 \setsansfont[
@@ -99,12 +100,12 @@ ItalicFont={* Light Italic}
   \end{figure}
 
   % \begin{itemize}
-  %   \vfill \item Diagnostics: a patient \textbf{obese} or \textbf{not
-  %     obese} \vfill \item Decision: a valve to be turned \textbf{on}
-  %   or \textbf{off} \vfill \item Data discretization: \textbf{pass} or
-  %   \textbf{fail} a material strength test \vfill \item Describing
-  %   types: \textbf{cubic}, \textbf{hexagonal}, \textbf{triclinic}
-  %   Bravais lattices, etc.
+  %   \vfill \item Diagnostics: a patient \textbf{obese} or
+  %   \textbf{not obese} \vfill \item Decision: a valve to be turned
+  %   \textbf{on} or \textbf{off} \vfill \item Data discretization:
+  %   \textbf{pass} or \textbf{fail} a material strength test
+  %   \vfill \item Describing types: \textbf{cubic},
+  %   \textbf{hexagonal}, \textbf{triclinic} Bravais lattices, etc.
 
   % \end{itemize}
 
@@ -161,7 +162,8 @@ ItalicFont={* Light Italic}
     $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{(1,
       n)}$
   \item Parameter set:
-    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{(1, 2)}$
+    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{(1,
+      2)}$
   \end{itemize}
 
   \vfill Does linear regression makes sense?
@@ -176,20 +178,12 @@ ItalicFont={* Light Italic}
 
 \begin{frame}
   \frametitle{Linear Regression Results}
-  \textbf{TBDTBDTBD}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \begin{figure}[t]
-        \includegraphics[width=\textwidth]{scripts/coin_linear_fit.pdf}
-      \end{figure}
-    \end{column}
-
-    \begin{column}{0.5\textwidth}
-      \begin{figure}[t]
-        \includegraphics[width=\textwidth]{scripts/coin_linear_res.pdf}
-      \end{figure}
-    \end{column}
-  \end{columns}
+  Let's compare the linear regression and analyze the residuals.
+  \begin{figure}
+    \centering %
+    \hspace*{-0.05\textwidth}%
+    \includegraphics[width=1.10\textwidth]{scripts/coin_linear_combined.pdf}
+  \end{figure}
 \end{frame}
   
 
