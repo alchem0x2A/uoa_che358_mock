@@ -778,7 +778,7 @@ ItalicFont={* Light Italic}
 
               \begin{itemize}
                 \vfill \item Model:
-                $p =1 / (\exp[-(\beta_{0} + \beta_{1}x)]$
+                $p =1 / (1 + \exp[-(\beta_{0} + \beta_{1}x)])$
 
                 \vfill \item Categorical response variable
 
@@ -802,15 +802,15 @@ ItalicFont={* Light Italic}
         \frametitle{Open Questions}
 
         \begin{enumerate}
-        \item Could you think of a way to extend binary logistic
+        \vfill \item Could you think of a way to extend binary logistic
           regression for multinomial classification problems?
 
           
-        \item Could you prove that the logistic function's log-loss is
+        \vfill \item Could you prove that the logistic function's log-loss is
           a convex function?
 
           
-        \item What if we use other sigmoid functions (e.g. scaled
+        \vfill \item What if we use other sigmoid functions (e.g. scaled
           $\tanh$) for ``logistic'' regression? Could you compare the
           model robustness and computational expenses?
         
@@ -823,6 +823,15 @@ ItalicFont={* Light Italic}
         \centering \vspace{3em} {\Huge \bfseries Questions?}
       \end{frame}
 
+      \begin{frame}
+        \frametitle{Usage of course material}
+
+        Course material and codes can be found at:
+
+        \url{https://github.com/alchem0x2A/uoa_che358_mock}
+
+        
+      \end{frame}
 
       \begin{frame}
         \frametitle{Appendix: Visualize the Cost Function}
