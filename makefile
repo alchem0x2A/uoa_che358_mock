@@ -11,7 +11,7 @@ all: $(PDFS)
 
 
 
-intro_logistic_regression.pdf: intro_logistic_regression.tex images/*.pdf images/*.mov images/*.mp4 scripts/*.mov scripts/*.pdf
+intro_logistic_regression.pdf: intro_logistic_regression.tex *.py images/*.pdf images/*.mov images/*.mp4 scripts/*.mov scripts/*.pdf
 	latexmk --shell-escape -pdflatex="lualatex -interaction=nonstopmode" -pdf intro_logistic_regression.tex
 
 scripts/animation.mov: scripts/0_coin_sample.py
