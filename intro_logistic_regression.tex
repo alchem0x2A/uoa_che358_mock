@@ -32,7 +32,7 @@ ItalicFont={* Light Italic}
 \author{\large Tian Tian}
 \date{\large 22 June 2023}
 
-\setbeamertemplate{footline}[page number]
+\setbeamertemplate{footline}[frame number]
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{itemize item}{\small $\bullet$}
 \setbeamertemplate{itemize subitem}{\footnotesize $\bullet$}
@@ -262,10 +262,11 @@ ItalicFont={* Light Italic}
   \frametitle{Candidates for Non-Linear Regression}
 
   A series of S-shaped (sigmoid) functions may meet our
-  criteria. Let's check their plots in 1D.  \textbf{TBD change x-->z;
-    change y-axis label; change the writings} \vspace{-1em}
+  criteria. Let's check their plots in 1D.
+  \vfill
   \begin{figure}[t]
-    \includegraphics[width=1.\textwidth]{scripts/sigmoid_funs.pdf}
+    \only<1>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs.pdf}}
+    \only<2>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs_emphasize_logistic.pdf}}
   \end{figure}
 \end{frame}
 
@@ -273,7 +274,7 @@ ItalicFont={* Light Italic}
   \frametitle{The Logistic Function: Properties}
   
   In 1D form, the sigmoid function $p(z) = 1/(1 + \mathrm{exp}(-z))$
-  is called the \textbf{logistic function} \footnotetext{{\scriptsize
+  is called the \textbf{logistic function} \let\thefootnote\relax\footnotetext{{\scriptsize
       In machine learning, \textit{sigmoid} function explicitly means
       logistic function.}}.
     %
@@ -281,27 +282,27 @@ ItalicFont={* Light Italic}
   \textbf{logistic regression}.
 
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.4\textwidth}
       \begin{enumerate}
-      \item Asymptotic behavior
+      \vfill \item Asymptotic behavior
           
         $\mathrm{lim}_{z\to\infty} p(z) = 1$
           
         $\mathrm{lim}_{z\to-\infty} p(z) = 0$
           
-      \item Symmetry
+      \vfill \item Symmetry
 
         $p(z) = 1 - p(-z)$
           
-      \item Point of inflection
+      \vfill \item Point of inflection
 
         $p(0) = \frac{1}{2}$
           
-      \item Inverse function
+      \vfill \item Inverse function
 
         $p^{-1} = \mathrm{log}(\frac{p}{1 - p})$
 
-      \item 1st and 2nd Derivatives
+      \vfill \item 1st and 2nd Derivatives
 
         $p^{'}(z) = p(z)(1 - p(z))$
 
@@ -311,8 +312,9 @@ ItalicFont={* Light Italic}
 
     \begin{column}{0.5\textwidth}
 
-        \begin{figure}[t]
-          \includegraphics[width=\textwidth]{scripts/logistic_fun_alone.pdf}
+        \begin{figure}[t]%
+          \hspace*{-0.1\textwidth}%
+          \includegraphics[width=1.2\textwidth]{scripts/logistic_fun_alone.pdf}
         \end{figure}
         
       \end{column}
@@ -340,19 +342,19 @@ ItalicFont={* Light Italic}
     \end{equation*}
 
     $p^{-1}$ is called the \textbf{Logit} function, measuring the
-    log-odds (i.e. probability ratio between a head and tail).  \vfill
-    Question: can be directly use the Logit function form to perform a
-    logistic regression?
+    log-odds (i.e. probability ratio between a head and tail). %
+    \vfill%
+    \textbf{Question: can be directly use the Logit function form to perform a
+    logistic regression?}
   
   \end{frame}
-  
 
   \begin{frame}
     \frametitle{Fitting by Logistic Function: the Maximum Likelihood
       Estimation}
 
     A common approach to solve logistic regression is to maximize the
-    \textbf{likelihood function} $\mathscr{L}(\beta|D)$ of the
+    \textbf{likelihood function} $\mathscr{L}(\beta|\mathbb{D})$ of the
     logistic function by varying the parameter set $\beta$.
 
     The logistic regression problem is solved by find:
@@ -361,8 +363,9 @@ ItalicFont={* Light Italic}
       \hat{\beta} = \mathrm{argmax}\ \mathscr{L}(\beta|\mathbb{D})
     \end{equation*}
     
-         \begin{figure}[t]
-           \includegraphics[width=0.5\textwidth]{images/likelihood.pdf}
+    \begin{figure}[t] %
+       \vspace{-2em}%
+           \includegraphics[width=0.7\textwidth]{images/likelihood.pdf}
          \end{figure}
 
     
@@ -373,7 +376,10 @@ ItalicFont={* Light Italic}
          \frametitle{The Likelihood of Logistic Function}
 
          The likelihood $L(\beta)$ of logistic functions follows the
-         Bernoulli distribution. Assume for any datum
+         Bernoulli distribution\let\thefootnote\relax%
+         \footnotetext{\scriptsize Montgomery \& Runger, Applied Statistics \& Probability for Engineers, 6th Ed, Chapter 7}.%
+         Assume for any datum 
+         %
          $(x_{i}, y_{i})$, $p_{i} = p(x_{i}; \beta)$, we have:
 
         \begin{equation*}
@@ -419,14 +425,20 @@ ItalicFont={* Light Italic}
           rate} (at step $s$), an important hyper-parameter in machine
         learning.
 
-        \vfill Question: where are the data points $(x_{i}, y_{i})$ in
-        the above equation?
+        \vfill
+        \textbf{Question: where are the data points $(x_{i}, y_{i})$ in
+        the above equation?}
 
       \end{frame}
 
       \begin{frame}
         \frametitle{Gradients of Logistic Regression}
-        \textbf{TBD mark in-depth analysis} The logistic function is a
+        %
+        \begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north east,yshift=-0.1cm] at (current page.north east) {\textcolor{magenta}{\textbf{In-depth Analysis}}};
+\end{tikzpicture}
+%
+        The logistic function is a
         perfect candidate for gradient-based optimization due to the
         neat form of gradients.
 
@@ -455,15 +467,16 @@ ItalicFont={* Light Italic}
       \begin{frame}
         \frametitle{Logistic Regression Demo: Cheater’s Coin}
         \begin{columns}[T]
-          \begin{column}{0.5\textwidth}
+          \begin{column}{0.45\textwidth}
             Logistic regression using Python's scikit-learn library:
             
             \inputminted[fontsize=\scriptsize]{python}{sample_lr_coin.py}
           \end{column}
 
-          \begin{column}{0.5\textwidth}
-            \begin{figure}[t]
-              \includegraphics[width=\textwidth]{scripts/coin_fit_lr.pdf}
+          \begin{column}{0.55\textwidth}
+            \begin{figure}[t]%
+              \hspace*{-0.1\textwidth}%
+              \includegraphics[width=1.20\textwidth]{scripts/coin_fit_lr.pdf}
             \end{figure}
           \end{column}
         \end{columns}

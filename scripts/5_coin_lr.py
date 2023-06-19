@@ -9,14 +9,14 @@ r, p, y = data["r"], data["p"], data["flip"]
 rr = r.reshape(-1, 1)
 
 def plot_main():
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(5.5, 4))
 
     ax.set_xlim(0, 1)
     ax.set_ylim(-0.1, 1.1)
     ax.axhline(y=1.0, ls="--", color="grey", lw=1.5)
     ax.axhline(y=0.0, ls="--", color="grey", lw=1.5)
-    ax.set_xlabel("$r$")
-    ax.set_ylabel("$y$")
+    ax.set_xlabel("$x$")
+    ax.set_ylabel("$p(x)$")
     ax.plot(r[y == 1], y[y == 1], "o", alpha=0.2)
     ax.plot(r[y == 0], y[y == 0], "o", alpha=0.2)
     lr = LogisticRegression(penalty="l2", C=1.0)
@@ -27,6 +27,7 @@ def plot_main():
     ax.plot(xx_p, yy_p, lw=2.0, color="#7f5c00")
     # print(xx, yy)
     # ax.hist(residuals, bins=20)
+    fig.tight_layout()
     fig.savefig("coin_fit_lr.pdf")
     
     return
