@@ -6,7 +6,9 @@ PDFS=intro_logistic_regression.pdf \
      scripts/coin_linear_combined.pdf \
      scripts/sigmoid_funs.pdf  scripts/sigmoid_funs_emphasize_logistic.pdf scripts/logistic_fun_alone.pdf \
      scripts/coin_fit_lr.pdf \
-     scripts/perfect_sep.pdf scripts/perfect_sep_reg.pdf
+     scripts/perfect_sep.pdf scripts/perfect_sep_reg.pdf \
+     scripts/batter_hyper.pdf \
+     scripts/loss_1.pdf scripts/loss_2.pdf
 
 all: $(PDFS)
 
@@ -44,6 +46,17 @@ scripts/perfect_sep_new_data.pdf: scripts/4_perfect_separation.py
 
 scripts/perfect_sep_reg.pdf: scripts/4_perfect_separation.py
 	cd "$(CURDIR)/scripts/" && $(PYTHON) $(notdir $<)
+
+scripts/batter_hyper.pdf: scripts/7_battery_data.py
+	cd "$(CURDIR)/scripts/" && $(PYTHON) $(notdir $<)
+
+scripts/loss_1.pdf: scripts/3_log_loss.py
+	cd "$(CURDIR)/scripts/" && $(PYTHON) $(notdir $<)
+
+scripts/loss_2.pdf: scripts/3_log_loss.py
+	cd "$(CURDIR)/scripts/" && $(PYTHON) $(notdir $<)
+
+
 
 clean:
 	rm -f *.log *.aux *.out *.toc *.lof *.lot *.pdf

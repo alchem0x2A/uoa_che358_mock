@@ -44,10 +44,11 @@ ItalicFont={* Light Italic}
 \begin{frame}[c]
   \frametitle{Perspective of Lecture}
   \begin{enumerate}
-  \item The classification problem \vfill \item Logistic regression vs
-    linear regression \vfill \item Fitting a logistic regression
-    \vfill \item Case study: Li-ion battery failure \vfill \item
-    Beyond logistic regression: neural networks
+    \vfill \item The classification problem %
+    \vfill \item Logistic regression vs linear regression %
+    \vfill \item Fitting a logistic regression model %
+    \vfill \item Case study: Li-ion battery failure %
+    \vfill \item Beyond logistic regression: neural networks %
   \end{enumerate}
 \end{frame}
 
@@ -58,7 +59,7 @@ ItalicFont={* Light Italic}
   \item Model Structure
 
     \vfill
-    $y = f(x; \beta) = β_{0} + β_{1} x_{1} + β_{2} x_{x} + ... + β_{d}
+    $y = f(x; \beta) = β_{0} + β_{1} x_{1} + β_{2} x_{2} + ... + β_{d}
     x_{d} + \epsilon \quad\quad \epsilon \sim N(0, \sigma^{2})$
 
     $x$ and $y$ are \textbf{continuous} variables.
@@ -76,8 +77,12 @@ ItalicFont={* Light Italic}
 
  
     \vfill \item Solving linear regression \vfill Least square fitting
+    
     ${\displaystyle \hat{\beta} = \mathrm{argmin}\ S =
-      \mathrm{argmin}\ \sum_{i=1}^{n} (y_{i} - f(x_{i}; \beta))^{2}}$
+      \underset{\beta}{\mathrm{argmin}}\ \sum_{i=1}^{n} (y_{i} -
+      f(x_{i}; \beta))^{2}}$
+
+    where $n$ is the number of samples
     
     \vfill \item Interpretation \vfill
     Coefficients $\beta$: how much $y$ change by one unit of $x$\\
@@ -91,25 +96,11 @@ ItalicFont={* Light Italic}
 \begin{frame}
   \frametitle{Categorical Response Variables}
 
-  The assumption of \textbf{continuous} variables may not be true for
-  many engineering problems.  If the output can only take a few
-  allowed values, we call it a \textbf{categorical} response variable.
+  Many engineering problems involve outputs that can only assume a limited set of values, also known as \textbf{categorical} response variables."
 
   \begin{figure}
-    \includegraphics[width=0.85\textwidth]{images/categorical.pdf}
+    \includegraphics[width=0.95\textwidth]{images/categorical.pdf}
   \end{figure}
-
-  % \begin{itemize}
-  %   \vfill \item Diagnostics: a patient \textbf{obese} or
-  %   \textbf{not obese} \vfill \item Decision: a valve to be turned
-  %   \textbf{on} or \textbf{off} \vfill \item Data discretization:
-  %   \textbf{pass} or \textbf{fail} a material strength test
-  %   \vfill \item Describing types: \textbf{cubic},
-  %   \textbf{hexagonal}, \textbf{triclinic} Bravais lattices, etc.
-
-  % \end{itemize}
-
-  % \vspace{2em}
 
 \end{frame}
 
@@ -117,9 +108,9 @@ ItalicFont={* Light Italic}
 
 \begin{frame}
   \frametitle{Thought Experiment: the Cheater’s Coin}
-  
-  You're a casino owner who wishes to create a biased coin. Can you
-  come up with a model to fit your measurements?
+
+  As a casino owner, if you wish to create a biased coin, how would
+  you construct a model to fit your observations and measurements?
 
   \vfill
   \begin{columns}
@@ -144,10 +135,10 @@ ItalicFont={* Light Italic}
 
 
 \begin{frame}
-  \frametitle{First Try: Linear Regression for Categorical Variables}
+  \frametitle{First Attempt: Linear Regression for Categorical Variables}
 
-  Let's first try to use linear regression to fit the
-  \textbf{probability} that our biased coin shows head. The
+  Let's start by using linear regression to fit the
+  \textbf{probability} that our biased coin lands heads up. The
   probability function to fit is:
   \begin{equation*}
     y = p(x; \mathbb{\beta}) = \beta_{0} + \beta_{1} x
@@ -166,7 +157,7 @@ ItalicFont={* Light Italic}
       2)}$
   \end{itemize}
 
-  \vfill Does linear regression makes sense?
+  \vfill Is linear regression suitable for this problem?
   \begin{itemize}
   \item Range of predicted values?
   \item Distribution of residues?
@@ -189,18 +180,19 @@ ItalicFont={* Light Italic}
 
 \begin{frame}
   \frametitle{Why Not Linear Regression?}
-  As can be seen from previous example, linear regression is not
+  As seen from previous example, linear regression is not
   suitable for predicting a dichotomous (binary) variable:
 
   \begin{enumerate}
     \vfill \item \textbf{Invalid predicted values}
 
-    Probability should be between $(0, 1)$
+    Probability should fall within the interval $(0, 1)$
   
     \vfill \item \textbf{Assumption of linearity violated}
 
-    Residuals are not independent of observation (not normally
-    distributed, not random)
+    Residuals are not independent from the predicted values, violating
+    the assumption of homoscedasticity.
+
 
   
     \vfill \item \textbf{Sensitive to data imbalance}
@@ -211,21 +203,17 @@ ItalicFont={* Light Italic}
     
     \vfill \item \textbf{Ambiguous definition of order and distance}
 
-    Categorical variables (usually) do not have defined ordering or
-    distance. Metrics like least square error do not make much sense
+    Categorical variables (usually) do not have a defined ordering or
+    distance. Metrics like least square error may not be appropriate.
     (even worse for multi-class variables).
     
   \end{enumerate}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Second Try: Non-Linear Regression}
-  % Making the probability function $p(x; \beta)$ non-linear may solve
-  % the problem!  But what will its expression be?
-
-  % \vfill
+  \frametitle{Second Attempt: Non-Linear Regression}
   
-  Recall: for binary outcome $y_{i} \in (0, 1)$, $p(x_{i}; \beta)$
+  Recall: for binary outcome $y_{i} \in \{0, 1\}$, $p(x_{i}; \beta)$
   means the probability of that the outcome $y_{i}=1$, given the input
   $x_{i}$ and parameters $\beta$:
   \begin{equation*}
@@ -242,7 +230,7 @@ ItalicFont={* Light Italic}
     
   \item \textbf{Linearization}:
 
-    We want $p$ to be ``linearizable'', i.e. to separate $x$ and
+    We want $p$ to be ``linearizable'', i.e. we can separate $x$ and
     $\beta$ to L.H.S via function inversion:
 
     \begin{equation*}
@@ -251,7 +239,7 @@ ItalicFont={* Light Italic}
 
   \item \textbf{Continuity}:
 
-    To satisfy the linearization, $p$ should be continuous and
+    To satisfy linearization, $p$ should be continuous and
     monotonic in $\mathbb{R}$ (why?)
     
   \end{enumerate}
@@ -261,8 +249,8 @@ ItalicFont={* Light Italic}
 \begin{frame}
   \frametitle{Candidates for Non-Linear Regression}
 
-  A series of S-shaped (sigmoid) functions may meet our
-  criteria. Let's check their plots in 1D.  \vfill
+  A series of S-shaped (sigmoid) functions could potentially meet our
+  criteria. Let's examine their plots in 1D.  \vfill
   \begin{figure}[t]
     \only<1>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs.pdf}}
     \only<2>{\includegraphics[width=1.\textwidth]{scripts/sigmoid_funs_emphasize_logistic.pdf}}
@@ -325,9 +313,9 @@ ItalicFont={* Light Italic}
   \begin{frame}
     \frametitle{Linear Regression: Formal Definition (1D)}
     Problem: for a given dataset
-    $\mathbb{D} = \{(x_{i}, y_{i}), \cdots, (x_{n}, y_{n})\}$,
+    $\mathbb{D} = \{(x_{1}, y_{1}), \cdots, (x_{n}, y_{n})\}$,
     estimate the probability that the input $x$ belongs to one of the
-    binary output $y \in (0, 1)$, where $x_{i} \in \mathbb{R}^{1}$.
+    binary output $y \in \{0, 1\}$, where $x_{i} \in \mathbb{R}^{1}$.
 
     \vfill Model: we use a linear combination of the input variable
     $x$ with parameter $\beta$ to construct the logistic function:
@@ -344,7 +332,7 @@ ItalicFont={* Light Italic}
     $p^{-1}$ is called the \textbf{Logit} function, measuring the
     log-odds (i.e. probability ratio between a head and tail). %
     \vfill%
-    \textbf{Question: can be directly use the Logit function form to
+    \textbf{Question: can we directly use the Logit function form to
       perform a logistic regression?}
   
   \end{frame}
@@ -357,10 +345,10 @@ ItalicFont={* Light Italic}
     \textbf{likelihood function} $\mathscr{L}(\beta|\mathbb{D})$ of
     the logistic function by varying the parameter set $\beta$.
 
-    The logistic regression problem is solved by find:
+    The logistic regression problem is solved by finding:
 
     \begin{equation*}
-      \hat{\beta} = \mathrm{argmax}\ \mathscr{L}(\beta|\mathbb{D})
+      \hat{\beta} = \underset{\beta}{\mathrm{argmax}}\ \mathscr{L}(\beta|\mathbb{D})
     \end{equation*}
     
     \begin{figure}[t] %
@@ -375,10 +363,11 @@ ItalicFont={* Light Italic}
   \begin{frame}
     \frametitle{The Likelihood of Logistic Function}
 
-    The likelihood $L(\beta)$ of logistic functions follows the
-    Bernoulli distribution\let\thefootnote\relax%
+    The likelihood $L(\beta)$ of logistic functions is derived from
+    the assumption that the response variable follows a Bernoulli
+    (binary) distribution\let\thefootnote\relax%
     \footnotetext{\scriptsize Montgomery \& Runger, Applied Statistics
-      \& Probability for Engineers, 6th Ed, Chapter 7}.%
+      \& Probability for Engineers, 6th Ed, Chapter 7}. %
     Assume for any datum
          %
     $(x_{i}, y_{i})$, $p_{i} = p(x_{i}; \beta)$, we have:
@@ -389,7 +378,7 @@ ItalicFont={* Light Italic}
 
         The log-loss likelihood $\mathscr{l}$ is used more frequently:
         \begin{equation*}
-          \mathscr{l}(\beta|\mathbb{D}) = -\mathrm{log} L(\beta|\mathbb{D}) = \sum_{i=1}^{n} -y_{i} \mathrm{log}p_{i} -  (1 - y_{i}) \mathrm{log}(1 - p_{i})
+          \mathscr{l}(\beta|\mathbb{D}) = -\mathrm{log} \mathscr{L}(\beta|\mathbb{D}) = - \sum_{i=1}^{n} \left[ y_{i} \mathrm{log}p_{i} +  (1 - y_{i}) \mathrm{log}(1 - p_{i}) \right]
         \end{equation*}
         
         
@@ -397,7 +386,7 @@ ItalicFont={* Light Italic}
           function} of logistic regression.  \vfill
         
         Now we just need to solve the optimal parameter set
-        $\hat{\beta} = \mathrm{argmin}\
+        $\hat{\beta} = \underset{\beta}{\mathrm{argmin}}\
         \mathscr{l}(\beta|\mathbb{D})$.
         
       \end{frame}
@@ -414,7 +403,7 @@ ItalicFont={* Light Italic}
         we pick the initial guess $\beta_{j}^{0}$, compute
         $l(\beta|\mathbb{D})$ and the first derivative
         $\partial l/\partial \beta_{j}$. We then iteratively update
-        $\beta_{j}$ by the Newton's method between steps $s$ and
+        $\beta_{j}$ by the gradient descent between steps $s$ and
         $s+1$:
 
         \begin{align*}
@@ -567,7 +556,7 @@ ItalicFont={* Light Italic}
           \vfill \item \textbf{(Pseudo)} $R^{2}$
 
           Unlike ordinary least square, logistic regression does not
-          have uniquely defined $R^{2}$, although some pseudo-$R^{2}$
+          have uniquely defined goodness-of-fit metric $R^{2}$, although some pseudo-$R^{2}$
           metrics have been proposed.%
           \let\thefootnote\relax\footnotetext{\scriptsize See Hosmer
             et al. \textit{Applied Logistic Regression} 3rd Ed,
@@ -578,8 +567,8 @@ ItalicFont={* Light Italic}
       \end{frame}
 
       \begin{frame}
-        \frametitle{Interpret the Logistic Regression Results}
-        Recall the linearization of the logistic function in 1D:
+        \frametitle{Interpreting the Logistic Regression Results}
+        Recalling the linearization of the logistic function in 1D:
 
         \begin{equation*}
           \log \left(\frac{p}{1 - p}\right) = \beta_{0} + \beta_{1}x
@@ -634,8 +623,8 @@ ItalicFont={* Light Italic}
         \frametitle{Real-World Example: Li-ion Battery Failure (1)}
 
         Can you predict if a lithium-ion battery in EV will fail from
-        measurements\let\thefootnote\relax\footnote{{\scriptsize Zhao et
-            al. \textit{iScience} \textbf{25}, 104172}}?
+        measurements\let\thefootnote\relax\footnote{{\scriptsize Zhao
+            et al. \textit{iScience} \textbf{25}, 104172}}?
 
         \begin{figure}[t]
           \includegraphics[width=0.9\linewidth]{images/battery_1.png}
@@ -660,23 +649,25 @@ ItalicFont={* Light Italic}
               material
               \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
         
-        General procedures for fitting / classification using logistic regression:
+        General procedures for fitting / classification using logistic
+        regression:
         
         \begin{itemize}
-        \vfill \item Step 1: \textbf{Dataset split} 
+          \vfill \item Step 1: \textbf{Dataset split}
 
           Rule of thumb: 80/20 or 70/30 (train/test) rule
           
-        \vfill \item Step 2:\textbf{ Create a logistic regression model}
+          \vfill \item Step 2:\textbf{ Create a logistic regression
+            model}
 
           See our example in coin dataset
           
-        \vfill \item Step 3: \textbf{Hyper-parameter tuning}
+          \vfill \item Step 3: \textbf{Hyper-parameter tuning}
 
           Some hyper-parameters (e.g. regularization) may affect model
           performance beyond $\beta$
           
-        \vfill \item Step 4: \textbf{Model accuracy test}
+          \vfill \item Step 4: \textbf{Model accuracy test}
 
           Additional dataset or cross-validation
         \end{itemize}
@@ -690,7 +681,46 @@ ItalicFont={* Light Italic}
               material
               \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
 
-        \textbf{TBD}
+        How does hyper-parameters affect test accuracy? (70/30 split,
+        data tainted with 5\% noise)
+
+        \begin{figure}
+          \vspace*{-0.05\textheight}%
+          \includegraphics[width=\textwidth]{scripts/batter_hyper.pdf}
+        \end{figure}
+        
+        
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{Real-World Example: Li-ion Battery Failure
+          (5)\let\thefootnote\relax\footnote{{\scriptsize See course
+              material
+              \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
+
+        3D surface of the probability distribution ($\lambda =
+        1$). Solid circle: train data, circle with edge: test data.
+
+        \begin{figure}
+          \vspace*{-0.15\textheight}%
+          \includegraphics[width=0.7\textwidth]{scripts/battery_3d.png}
+        \end{figure}
+        
+        
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{Real-World Example: Li-ion Battery Failure
+          (5)\let\thefootnote\relax\footnote{{\scriptsize See course
+              material
+              \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
+
+        Decision boundary of the best model ($\lambda = 1$). Do you
+        think we can further improve our model?
+
+        \begin{figure}
+          \includegraphics[width=\textwidth]{scripts/batter_decision.pdf}
+        \end{figure}
         
         
       \end{frame}
@@ -802,17 +832,17 @@ ItalicFont={* Light Italic}
         \frametitle{Open Questions}
 
         \begin{enumerate}
-        \vfill \item Could you think of a way to extend binary logistic
-          regression for multinomial classification problems?
+          \vfill \item Could you think of a way to extend binary
+          logistic regression for multinomial classification problems?
 
           
-        \vfill \item Could you prove that the logistic function's log-loss is
-          a convex function?
+          \vfill \item Could you prove that the logistic function's
+          log-loss is a convex function?
 
           
-        \vfill \item What if we use other sigmoid functions (e.g. scaled
-          $\tanh$) for ``logistic'' regression? Could you compare the
-          model robustness and computational expenses?
+          \vfill \item What if we use other sigmoid functions
+          (e.g. scaled $\tanh$) for ``logistic'' regression? Could you
+          compare the model robustness and computational expenses?
         
         \end{enumerate}
         

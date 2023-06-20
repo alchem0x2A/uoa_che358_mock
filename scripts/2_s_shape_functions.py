@@ -5,14 +5,18 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score
 from scipy.special import erf
 
+
 def erf_scaled(x):
     return (erf(x) + 1) / 2
+
 
 def logistic(x):
     return 1 / (1 + np.exp(-x))
 
+
 def tanh_scaled(x):
     return (np.tanh(x) + 1) / 2
+
 
 def atan_scaled(x):
     return (np.arctan(x) / np.pi) + 0.5
@@ -31,10 +35,16 @@ def plot_main():
     ax.set_xlabel("$z$")
     ax.set_ylabel("Normalized $p(z)$")
     x = np.linspace(-5, 5, 256)
-    l1, = ax.plot(x, tanh_scaled(x), label=r"$(\mathrm{tanh}(z) + 1) / 2$", lw=2, alpha=1)
-    l2, = ax.plot(x, atan_scaled(x), label=r"$(\mathrm{arctan}(z) / \pi) + 1 / 2$", lw=2, alpha=1)
-    l3, = ax.plot(x, erf_scaled(x), label=r"$(\mathrm{erf}(z) + 1) / 2$", lw=2, alpha=1 )
-    l4, = ax.plot(x, logistic(x), label=r"$1/ (1 + e^{-z})$", lw=2, color="k")
+    (l1,) = ax.plot(
+        x, tanh_scaled(x), label=r"$(\mathrm{tanh}(z) + 1) / 2$", lw=2, alpha=1
+    )
+    (l2,) = ax.plot(
+        x, atan_scaled(x), label=r"$(\mathrm{arctan}(z) / \pi) + 1 / 2$", lw=2, alpha=1
+    )
+    (l3,) = ax.plot(
+        x, erf_scaled(x), label=r"$(\mathrm{erf}(z) + 1) / 2$", lw=2, alpha=1
+    )
+    (l4,) = ax.plot(x, logistic(x), label=r"$1/ (1 + e^{-z})$", lw=2, color="k")
 
     legend_ = ax.legend()
     fig.tight_layout()
@@ -46,12 +56,14 @@ def plot_main():
     l4.set_linewidth(4)
     legend_.remove()
 
-    ax.text(x=0.4, y=0.5,
-            va="center",
-            s=r"Logistic function: $p(z) = \dfrac{1}{1 + e^{-z}}$")
+    ax.text(
+        x=0.4,
+        y=0.5,
+        va="center",
+        s=r"Logistic function: $p(z) = \dfrac{1}{1 + e^{-z}}$",
+    )
 
     fig.savefig("sigmoid_funs_emphasize_logistic.pdf")
-    
 
     fig, ax = plt.subplots(figsize=(6, 4.5))
 
@@ -67,18 +79,15 @@ def plot_main():
     ax.set_ylabel("$p(z)$")
     x = np.linspace(-5, 5, 256)
     ax.plot(x, logistic(x), lw=3, color="k")
-    ax.text(x=-4.6, y=0.90,
-            va="top",
-            ha="left",
-            s=r"$p(z) = \dfrac{1}{1 + e^{-z}}$")
+    ax.text(x=-4.6, y=0.90, va="top", ha="left", s=r"$p(z) = \dfrac{1}{1 + e^{-z}}$")
     ax.text(x=0.4, y=0.45, s="Point of inflection")
     ax.text(x=0, y=1.12, s="Decision boundary $z=0$", ha="center", va="bottom")
-    
 
     # ax.legend()
     fig.tight_layout()
     fig.savefig("logistic_fun_alone.pdf")
     return
+
 
 if __name__ == "__main__":
     plot_main()

@@ -8,6 +8,7 @@ data = np.load("result_coin.npz", allow_pickle=True)
 r, p, y = data["r"], data["p"], data["flip"]
 rr = r.reshape(-1, 1)
 
+
 def plot_main():
     fig, ax = plt.subplots(figsize=(7, 6.5))
 
@@ -30,17 +31,24 @@ def plot_main():
     x0 = -b / w
     ax.plot(xx_p, yy_p, lw=2.0, color="#7f5c00")
     ax.axvline(x=x0, color="grey", alpha=0.8, lw=2.5, ls="-")
-    ax.text(x=0.02, y=0.75, ha="left", va="bottom",
-            s=f'$p(x) = \\dfrac{{1}}{{1 + e^{{({{{b:.2f}}} + {{{w:.2f}}}x)}}}}$')
-    ax.text(x=0.02, y=0.65, ha="left", va="bottom",
-            s=f"Accuracy: {accuracy * 100:.1f}%")
+    ax.text(
+        x=0.02,
+        y=0.75,
+        ha="left",
+        va="bottom",
+        s=f"$p(x) = \\dfrac{{1}}{{1 + e^{{({{{b:.2f}}} + {{{w:.2f}}}x)}}}}$",
+    )
+    ax.text(
+        x=0.02, y=0.65, ha="left", va="bottom", s=f"Accuracy: {accuracy * 100:.1f}%"
+    )
     ax.text(x=x0, y=1.25, s=f"Decision Boundary", va="bottom", ha="center")
     ax.text(x=x0, y=1.15, s=f"$x={x0:.2f}$", va="bottom", ha="center")
     print(x0)
     fig.tight_layout()
     fig.savefig("coin_fit_lr.pdf")
-    
+
     return
+
 
 if __name__ == "__main__":
     plot_main()

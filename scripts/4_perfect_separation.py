@@ -21,12 +21,15 @@ rr = r.reshape(-1, 1)
 y = np.array(new_y)
 print(r.shape, y.shape, rr.shape)
 
+
 def f(x):
     """sign function"""
     return (np.sign(x) + 1) / 2
 
+
 def p(x, w, b):
     return 1 / (1 + np.exp(-(w * x + b)))
+
 
 def log_loss(x, y, w, b):
     losses = []
@@ -34,10 +37,11 @@ def log_loss(x, y, w, b):
         pi = p(xi, w, b)
         losses.append(yi * np.log(pi) + (1 - yi) * np.log(1 - pi))
     return -np.sum(losses)
-    
+
 
 # x = np.hstack([np.linspace(-2, -1.0, 50), np.linspace(1.0, 2, 50)])
 # y = f(x)
+
 
 def plot_main():
     fig, ax = plt.subplots(figsize=(11.5, 6))
@@ -58,7 +62,9 @@ def plot_main():
         b = w * -0.5
         loss = log_loss(r, y, w, b)
         print(w, loss)
-        l, = ax.plot(xx, p(xx, w, b), lw=2, alpha=0.8, label=f"$w$={w}, loss={loss:.2f}")
+        (l,) = ax.plot(
+            xx, p(xx, w, b), lw=2, alpha=0.8, label=f"$w$={w}, loss={loss:.2f}"
+        )
         old_ls.append(l)
     leg_ = ax.legend()
     ax.set_xlabel("$x$")
@@ -79,8 +85,8 @@ def plot_main():
         loss = log_loss(r_nd, y_nd, w, b)
         print(w, loss)
         old_ls[i].set_label(f"$w$={w}, loss={loss:.2f}")
-    
-    l_new, = ax.plot(new_x, new_y, "^", markersize=15, color="magenta")
+
+    (l_new,) = ax.plot(new_x, new_y, "^", markersize=15, color="magenta")
     t_new = ax.text(x=0.61, y=0.15, ha="center", s="New data?")
     leg_ = ax.legend()
     fig.savefig("perfect_sep_new_data.pdf")
@@ -112,12 +118,13 @@ def plot_main():
     ax.plot(xx_r, clf.predict_proba(xx_r)[:, 1], lw=3, alpha=1.0, color="grey")
     for l_ in old_ls:
         l_.set_alpha(0.1)
-    ax.text(x=0.6, y=0.5, ha="left", va="bottom",
-            s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$, ")
+    ax.text(
+        x=0.6, y=0.5, ha="left", va="bottom", s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$, "
+    )
     leg_.remove()
     fig.savefig("perfect_sep_reg.pdf")
     return
 
+
 if __name__ == "__main__":
     plot_main()
-

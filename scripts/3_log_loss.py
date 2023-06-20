@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score
 from scipy.special import erf
 
+
 def log1(p):
     return -np.log(p)
 
-def log2(p):
-    return -np.log(1-p)
 
+def log2(p):
+    return -np.log(1 - p)
 
 
 def plot_main():
@@ -37,6 +38,7 @@ def plot_main():
     fig.savefig("loss_2.pdf")
 
     return
+
 
 if __name__ == "__main__":
     plot_main()
