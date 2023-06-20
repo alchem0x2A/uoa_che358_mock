@@ -44,7 +44,7 @@ ItalicFont={* Light Italic}
 \begin{frame}[c]
   \frametitle{Perspective of Lecture}
   \begin{enumerate}
-    \vfill \item The classification problem %
+    \vfill \item The categorical variables and the classification problem %
     \vfill \item Logistic regression vs linear regression %
     \vfill \item Fitting a logistic regression model %
     \vfill \item Case study: Li-ion battery failure %
@@ -78,7 +78,7 @@ ItalicFont={* Light Italic}
  
     \vfill \item Solving linear regression \vfill Least square fitting
     
-    ${\displaystyle \hat{\beta} = \mathrm{argmin}\ S =
+    ${\displaystyle \hat{\beta} = \underset{\beta}{\mathrm{argmin}}\ S =
       \underset{\beta}{\mathrm{argmin}}\ \sum_{i=1}^{n} (y_{i} -
       f(x_{i}; \beta))^{2}}$
 
@@ -188,7 +188,7 @@ ItalicFont={* Light Italic}
 
     Probability should fall within the interval $(0, 1)$
   
-    \vfill \item \textbf{Assumption of linearity violated}
+    \vfill \item \textbf{Assumptions of linear regression violated}
 
     Residuals are not independent from the predicted values, violating
     the assumption of homoscedasticity.
@@ -228,10 +228,10 @@ ItalicFont={* Light Italic}
 
     $p$ maps $x \in \mathbb{R}$ to $y \in (0, 1)$.
     
-  \item \textbf{Linearization}:
+  \item \textbf{Linear transformation}:
 
     We want $p$ to be ``linearizable'', i.e. we can separate $x$ and
-    $\beta$ to L.H.S via function inversion:
+    $\beta$ to L.H.S via function inversion (with an analytical expression):
 
     \begin{equation*}
       p^{-1} = \mathrm{Inversion}(p) = \beta_{0} + \beta_{1} x_{i}
