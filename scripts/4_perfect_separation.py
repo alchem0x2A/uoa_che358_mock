@@ -112,6 +112,7 @@ def plot_main():
     #     loss = log_loss(x, y, w, 0)
     #     ax.plot(xx, p(xx, w, 0), lw=1, alpha=0.1, label=f"{w}")
 
+    arrow.remove()
     lr = LogisticRegression(penalty="l2", C=10)
     x_r = r.reshape(-1, 1)
     xx_r = xx.reshape(-1, 1)
@@ -123,7 +124,7 @@ def plot_main():
     for l_ in old_ls:
         l_.set_alpha(0.1)
     ax.text(
-        x=0.6, y=0.5, ha="left", va="bottom", s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$, "
+        x=0.6, y=0.5, ha="left", va="bottom", s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$ "
     )
     leg_.remove()
     fig.savefig("perfect_sep_reg.pdf")
