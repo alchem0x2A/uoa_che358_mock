@@ -63,9 +63,13 @@ def plot_main():
         loss = log_loss(r, y, w, b)
         print(w, loss)
         (l,) = ax.plot(
-            xx, p(xx, w, b), lw=2, alpha=0.8, label=f"$w$={w}, loss={loss:.2f}"
+            xx, p(xx, w, b), lw=2, alpha=0.8, label=f"$\\beta_{{1}}$={w}, loss={loss:.2f}"
         )
         old_ls.append(l)
+    arrow = ax.annotate(r'Increasing $\beta_{1}$',
+                        ha="right",
+                xy=(0.65, 0.65), xytext=(0.45, 0.80),
+                arrowprops=dict(arrowstyle='<-'))
     leg_ = ax.legend()
     ax.set_xlabel("$x$")
     ax.set_ylabel("$y$")
@@ -84,7 +88,7 @@ def plot_main():
         b = w * -0.5
         loss = log_loss(r_nd, y_nd, w, b)
         print(w, loss)
-        old_ls[i].set_label(f"$w$={w}, loss={loss:.2f}")
+        old_ls[i].set_label(f"$\\beta_{{1}}$={w}, loss={loss:.2f}")
 
     (l_new,) = ax.plot(new_x, new_y, "^", markersize=15, color="magenta")
     t_new = ax.text(x=0.61, y=0.15, ha="center", s="New data?")
@@ -108,6 +112,7 @@ def plot_main():
     #     loss = log_loss(x, y, w, 0)
     #     ax.plot(xx, p(xx, w, 0), lw=1, alpha=0.1, label=f"{w}")
 
+    arrow.remove()
     lr = LogisticRegression(penalty="l2", C=10)
     x_r = r.reshape(-1, 1)
     xx_r = xx.reshape(-1, 1)
@@ -119,7 +124,7 @@ def plot_main():
     for l_ in old_ls:
         l_.set_alpha(0.1)
     ax.text(
-        x=0.6, y=0.5, ha="left", va="bottom", s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$, "
+        x=0.6, y=0.5, ha="left", va="bottom", s=f"Weight: {w:.2f}, L2 $\\lambda=0.1$ "
     )
     leg_.remove()
     fig.savefig("perfect_sep_reg.pdf")

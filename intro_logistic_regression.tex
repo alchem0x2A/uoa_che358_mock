@@ -44,7 +44,7 @@ ItalicFont={* Light Italic}
 \begin{frame}[c]
   \frametitle{Perspective of Lecture}
   \begin{enumerate}
-    \vfill \item The classification problem %
+    \vfill \item The categorical variables and the classification problem %
     \vfill \item Logistic regression vs linear regression %
     \vfill \item Fitting a logistic regression model %
     \vfill \item Case study: Li-ion battery failure %
@@ -78,7 +78,7 @@ ItalicFont={* Light Italic}
  
     \vfill \item Solving linear regression \vfill Least square fitting
     
-    ${\displaystyle \hat{\beta} = \mathrm{argmin}\ S =
+    ${\displaystyle \hat{\beta} = \underset{\beta}{\mathrm{argmin}}\ S =
       \underset{\beta}{\mathrm{argmin}}\ \sum_{i=1}^{n} (y_{i} -
       f(x_{i}; \beta))^{2}}$
 
@@ -188,7 +188,7 @@ ItalicFont={* Light Italic}
 
     Probability should fall within the interval $(0, 1)$
   
-    \vfill \item \textbf{Assumption of linearity violated}
+    \vfill \item \textbf{Assumptions of linear regression violated}
 
     Residuals are not independent from the predicted values, violating
     the assumption of homoscedasticity.
@@ -228,10 +228,10 @@ ItalicFont={* Light Italic}
 
     $p$ maps $x \in \mathbb{R}$ to $y \in (0, 1)$.
     
-  \item \textbf{Linearization}:
+  \item \textbf{Linear transformation}:
 
     We want $p$ to be ``linearizable'', i.e. we can separate $x$ and
-    $\beta$ to L.H.S via function inversion:
+    $\beta$ to L.H.S via function inversion (with an analytical expression):
 
     \begin{equation*}
       p^{-1} = \mathrm{Inversion}(p) = \beta_{0} + \beta_{1} x_{i}
@@ -311,7 +311,7 @@ ItalicFont={* Light Italic}
   \end{frame}
 
   \begin{frame}
-    \frametitle{Linear Regression: Formal Definition (1D)}
+    \frametitle{Logistic Regression: Formal Definition (1D)}
     Problem: for a given dataset
     $\mathbb{D} = \{(x_{1}, y_{1}), \cdots, (x_{n}, y_{n})\}$,
     estimate the probability that the input $x$ belongs to one of the
@@ -330,7 +330,7 @@ ItalicFont={* Light Italic}
     \end{equation*}
 
     $p^{-1}$ is called the \textbf{Logit} function, measuring the
-    log-odds (i.e. probability ratio between a head and tail). %
+    log-odd ratio (i.e. probability ratio between a head and tail). %
     \vfill%
     \textbf{Question: can we directly use the Logit function form to
       perform a logistic regression?}
@@ -597,12 +597,12 @@ ItalicFont={* Light Italic}
         %
 
         It is straightforward to extend the logistic regression if
-        input variable $\mathbf{x} \in \mathbb{R}^{d}$.  \vfill
+        input variable $\mathbf{x}_{i} \in \mathbb{R}^{d\times{}1}$.  \vfill
         \textbf{Model}:
         \begin{align*}
-          p(\mathbf{x}; \beta) &= \dfrac{1}{1 + e^{-(\beta_{0} + \sum_{j=1}^{d} \beta_{d} x_{d})}} = \dfrac{1}{1 + \exp(- \beta^{T} \mathbf{X})}
+          p(\mathbf{x}_{i}; \beta) &= \dfrac{1}{1 + e^{-(\beta_{0} + \sum_{j=1}^{d} \beta_{j} x_{ij})}} = \dfrac{1}{1 + \exp(- \mathbf{X}_{i}^{\mathrm{T}} \beta)}
         \end{align*}
-        here $\mathbf{X} = {1, x_{0}, x_{1}, \cdots, x_{d}}$.
+        here $\mathbf{X} = \left[1, x_{i0}, x_{i1}, \cdots, x_{id}\right] \in \mathbb{R}^{(d+1)\times{}1}$.
 
         \vfill \textbf{Likelihood function}:
         \begin{align*}
@@ -612,10 +612,9 @@ ItalicFont={* Light Italic}
         \vfill \textbf{Gradient}:
         \begin{align*}
           \frac{\partial \mathscr{l}}{\partial \beta_{j}}
-          &= -\sum_{i=1}^{n} -\frac{1}{1 + \exp(-\beta^{T} \mathbf{X}_{i})} x_{ij} + y_{i}x_{ij} \\
+          &= -\sum_{i=1}^{n} -\frac{1}{1 + \exp(-\mathbf{X}_{i}^{\mathrm{T}} \beta)} x_{ij} + y_{i}x_{ij} \\
           &= \sum_{i=1}^{n} (p_{i} - y_{i})x_{ij}
         \end{align*}
-        where $x_{ij}$ is the $j$-th component in $i$-th datum.
         
       \end{frame}
 
@@ -702,7 +701,7 @@ ItalicFont={* Light Italic}
         1$). Solid circle: train data, circle with edge: test data.
 
         \begin{figure}
-          \vspace*{-0.15\textheight}%
+          \vspace*{-0.20\textheight}%
           \includegraphics[width=0.7\textwidth]{scripts/battery_3d.png}
         \end{figure}
         

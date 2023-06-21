@@ -64,8 +64,8 @@ def get_all_data(seed=0):
     red_pts = gen_all_points(data4, data5, data6, limit=(0.013, 0.013))
     label_red = np.zeros(len(red_pts))
 
-    random_data = np.random.uniform(0.5, 1, size=(5, 3))
-    random_labels = np.random.choice([0, 1], size=5)
+    random_data = np.random.uniform([0, 0.3, 0.8], [1, 1, 1], size=(20, 3))
+    random_labels = np.random.choice([0, 1], size=20)
 
     all_data = np.vstack([grey_pts, red_pts, random_data])
     labels = np.hstack([label_grey, label_red, random_labels])
@@ -202,7 +202,21 @@ def plot_surf3d(ax, model):
 
     grid_points = np.c_[grid_x.ravel(), grid_y.ravel(), grid_z.ravel()]
     probabilities = model.predict_proba(grid_points)[:, 1]
-    ax.scatter(grid_points[:, 0], grid_points[:, 1], grid_points[:, 2], s=200, c=probabilities, cmap='RdGy', alpha=0.02)
+    ax.scatter(grid_points[:, 0], grid_points[:, 1], grid_points[:, 2], s=200,
+               c=probabilities, cmap='RdGy', alpha=0.02)
+    xx, yy = np.meshgrid(np.linspace(0, 1, 256), np.linspace(0.3, 1, 256))
+    zz = np.ones_like(yy) * 0.9
+    grid_2d = np.c_[xx.ravel(), yy.ravel(), zz.ravel()]
+    prob_2d = model.predict_proba(grid_2d)[:, 1]
+    cc = prob_2d.reshape(yy.shape)
+    ax.plot_surface(xx, yy, zz, alpha=0.5)
+    cond = np.where(np.abs(prob_2d - 0.5) < 0.05)[0]
+    fitfun = np.poly1d(np.polyfit(xx.ravel()[cond], yy.ravel()[cond], deg=1))
+    # ax.plot3D(xx.ravel(), fitfun(xx.ravel()), zz.ravel())
+    
+    
+
+    # ax.pcolor(xx, yy, zz, cmap="RdGy", alpha=0.5)
     return
 
 def plot_boundary(ax, model, first, second, x=None, y=None, z=None):
@@ -225,7 +239,7 @@ def plot_boundary(ax, model, first, second, x=None, y=None, z=None):
 
     af, bf = dims[first][boundary_points], dims[second][boundary_points]
     fitfun = np.poly1d(np.polyfit(af, bf, 1))
-    ax.plot(dims2[first], fitfun(dims2[first]))
+    ax.plot(dims2[first], fitfun(dims2[first]), ls="--", color="grey", lw=3)
 
     return
 
@@ -247,16 +261,19 @@ def plot_decision():
     ax3.set_xlabel("Vol consistency")
     ax1.set_ylabel("Cap consistency")
     ax2.set_ylabel("Cap consistency")
-    ax3.set_ylabel("Temp const")
+    ax3.set_ylabel("Temp consistency")
     ax1.set_xlim(0, 1.0)
     ax1.set_ylim(0.8, 1.0)
     ax2.set_xlim(0.3, 1.0)
     ax2.set_ylim(0.8, 1.0)
     ax3.set_xlim(0.3, 1.0)
     ax3.set_ylim(0.0, 1.0)
-    plot_boundary(ax1, model, 0, 2, y=np.ones(100) * 0.6)
+    plot_boundary(ax1, model, 0, 2, y=np.ones(100) * 0.4)
     plot_boundary(ax2, model, 1, 2, x=np.ones(100) * 0.5)
-    plot_boundary(ax3, model, 1, 0, z=np.ones(100) * 0)
+    plot_boundary(ax3, model, 1, 0, z=np.ones(100) * 0.9)
+    ax1.set_title("Vol consistency = 0.4")
+    ax2.set_title("Temp consistency = 0.5")
+    ax3.set_title("Cap consistency = 0.9")
 
     # ax.plot(lr_val, acc_lr, "o")
     fig.tight_layout()

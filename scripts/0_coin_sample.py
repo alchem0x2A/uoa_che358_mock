@@ -38,7 +38,7 @@ def init():
     ax.set_yticklabels(["T ($y=0$)", "H ($y=1$)"])
     ax.axhline(y=1.0, ls="--", color="grey", lw=1.5)
     ax.axhline(y=0.0, ls="--", color="grey", lw=1.5)
-    ax.set_xlabel("$x$ (Head weight ratio)")
+    ax.set_xlabel("$x$ (Tail weight ratio)")
     ax.set_ylabel("$y$ Head or Tail")
     # ax.grid(True)
     return (ax,)
