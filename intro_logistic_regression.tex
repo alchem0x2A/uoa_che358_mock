@@ -147,14 +147,11 @@ ItalicFont={* Light Italic}
   \vfill Our dataset
   \begin{itemize}
   \item Predictor (input) variable:
-    $\mathbf{x} = \{x_{1}, x_{2}, \cdots, x_{n}\} \in \mathbb{R}^{(1,
-      n)}$
+    $\mathbf{x} = \{x_{1}, x_{2}, \cdots, x_{n}\} \in \mathbb{R}^{1\times{}n}$
   \item Response (predict) variable:
-    $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{(1,
-      n)}$
+    $\mathbf{y} = \{y_{1}, y_{2}, \cdots, y_{n}\} \in \mathbb{R}^{1\times{}n}$
   \item Parameter set:
-    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{(1,
-      2)}$
+    $\mathbf{\beta} = \{\beta_{0}, \beta_{1}\} \in \mathbb{R}^{(2, 1)}$
   \end{itemize}
 
   \vfill Is linear regression suitable for this problem?
@@ -714,7 +711,7 @@ ItalicFont={* Light Italic}
               material
               \url{https://github.com/alchem0x2A/uoa_che358_mock}}}}
 
-        Decision boundary of the best model ($\lambda = 1$). Do you
+        Decision boundary of the best model ($\lambda = 0.01$). Do you
         think we can further improve our model?
 
         \begin{figure}

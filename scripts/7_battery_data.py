@@ -64,8 +64,8 @@ def get_all_data(seed=0):
     red_pts = gen_all_points(data4, data5, data6, limit=(0.013, 0.013))
     label_red = np.zeros(len(red_pts))
 
-    random_data = np.random.uniform([0, 0.3, 0.8], [1, 1, 1], size=(20, 3))
-    random_labels = np.random.choice([0, 1], size=20)
+    random_data = np.random.uniform([0, 0.3, 0.8], [1, 1, 1], size=(12, 3))
+    random_labels = np.random.choice([0, 1], size=12)
 
     all_data = np.vstack([grey_pts, red_pts, random_data])
     labels = np.hstack([label_grey, label_red, random_labels])
@@ -111,8 +111,8 @@ def plot_hyper():
     ax.set_ylim(0.4, 1.05)
     ax.set_xlabel(r"$\lambda$ (L2 regularization penalty)")
     ax.set_ylabel(r"Test set accuracy")
-    ax.axvspan(0.5, 10, color="#eba434", alpha=0.2)
-    ax.text(x=2, y=1.06, va="bottom", ha="center", s=r"Practical Range for $\lambda$")
+    ax.axvspan(1e-3, 10, color="#eba434", alpha=0.2)
+    ax.text(x=0.1, y=1.06, va="bottom", ha="center", s=r"Practical Range for $\lambda$")
 
     # ax.plot(lr_val, acc_lr, "o")
     ax.set_xscale("log")
@@ -247,7 +247,7 @@ def plot_boundary(ax, model, first, second, x=None, y=None, z=None):
 def plot_decision():
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
     ax1, ax2, ax3 = axes[0], axes[1], axes[2]
-    acc, model, data = train_model(train_split=0.7, test_split=0.3, l=1, seed=42)
+    acc, model, data = train_model(train_split=0.7, test_split=0.3, l=0.01, seed=42)
     X_train, X_test, y_train, y_test = data
     print(model.coef_, model.intercept_)
     # temp, cap
@@ -268,12 +268,13 @@ def plot_decision():
     ax2.set_ylim(0.8, 1.0)
     ax3.set_xlim(0.3, 1.0)
     ax3.set_ylim(0.0, 1.0)
-    plot_boundary(ax1, model, 0, 2, y=np.ones(100) * 0.4)
-    plot_boundary(ax2, model, 1, 2, x=np.ones(100) * 0.5)
-    plot_boundary(ax3, model, 1, 0, z=np.ones(100) * 0.9)
-    ax1.set_title("Vol consistency = 0.4")
-    ax2.set_title("Temp consistency = 0.5")
-    ax3.set_title("Cap consistency = 0.9")
+    l1, l2, l3 = 0.7, 0.5, 0.9
+    plot_boundary(ax1, model, 0, 2, y=np.ones(100) * l1)
+    plot_boundary(ax2, model, 1, 2, x=np.ones(100) * l2)
+    plot_boundary(ax3, model, 1, 0, z=np.ones(100) * l3)
+    ax1.set_title(f"Vol consistency = {l1:.2f}")
+    ax2.set_title(f"Temp consistency = {l2:.2f}")
+    ax3.set_title(f"Cap consistency = {l3:.2f}")
 
     # ax.plot(lr_val, acc_lr, "o")
     fig.tight_layout()
