@@ -24,12 +24,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.0171284"
-     inkscape:cx="67.346463"
+     inkscape:cx="33.919021"
      inkscape:cy="171.06985"
      inkscape:window-width="1280"
      inkscape:window-height="692"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-x="251"
+     inkscape:window-y="720"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      inkscape:snap-bbox="true"
@@ -155,18 +155,18 @@
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:'Fira sans';-inkscape-font-specification:'Fira sans';stroke-width:0.264583"
-       x="37.31477"
+       x="37.651157"
        y="150.43633"
        id="text40920"><tspan
          sodipodi:role="line"
          id="tspan40918"
          style="font-size:6.35px;baseline-shift:baseline;stroke-width:0.264583"
-         x="37.31477"
+         x="37.651157"
          y="150.43633"><tspan
    style="font-style:italic;font-size:6.35px;baseline-shift:baseline"
    id="tspan41874">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan647">H</tspan> / (<tspan
+   id="tspan56330">T</tspan> / (<tspan
    style="font-style:italic;font-size:6.35px;baseline-shift:baseline"
    id="tspan41878">w</tspan><tspan
    style="font-size:65%;baseline-shift:sub"
@@ -178,14 +178,14 @@
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';stroke-width:0.264583"
-       x="31.076073"
+       x="33.793873"
        y="142.05627"
        id="text643"><tspan
          sodipodi:role="line"
          id="tspan641"
          style="font-size:6.35px;stroke-width:0.264583"
-         x="31.076073"
-         y="142.05627">Head weight ratio</tspan></text>
+         x="33.793873"
+         y="142.05627">Tail weight ratio</tspan></text>
   </g>
   <script
      id="mesh_polyfill"

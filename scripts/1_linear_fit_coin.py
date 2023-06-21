@@ -18,7 +18,7 @@ def plot_main():
     # ax.set_yticks([0, 1])
     ax.axhline(y=1.0, ls="--", color="grey", lw=1.5)
     ax.axhline(y=0.0, ls="--", color="grey", lw=1.5)
-    ax.set_xlabel("$x$ (head weight ratio)")
+    ax.set_xlabel("$x$ (tail weight ratio)")
     ax.set_ylabel("$y$ (head or tail)")
     (l1,) = ax.plot(r[y == 1], y[y == 1], "o", alpha=0.2)
     (l2,) = ax.plot(r[y == 0], y[y == 0], "o", alpha=0.2)

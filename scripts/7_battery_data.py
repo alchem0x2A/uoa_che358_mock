@@ -64,8 +64,8 @@ def get_all_data(seed=0):
     red_pts = gen_all_points(data4, data5, data6, limit=(0.013, 0.013))
     label_red = np.zeros(len(red_pts))
 
-    random_data = np.random.uniform(0.5, 1, size=(5, 3))
-    random_labels = np.random.choice([0, 1], size=5)
+    random_data = np.random.uniform([0, 0.3, 0.8], [1, 1, 1], size=(20, 3))
+    random_labels = np.random.choice([0, 1], size=20)
 
     all_data = np.vstack([grey_pts, red_pts, random_data])
     labels = np.hstack([label_grey, label_red, random_labels])
